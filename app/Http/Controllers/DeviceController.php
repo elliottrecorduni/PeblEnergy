@@ -14,9 +14,9 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $test = 5;
+        $devices = Device::all();
 
-        return view('devices.index', compact('test'));
+        return view('devices.index', compact('devices'));
     }
 
     /**
@@ -38,6 +38,14 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         $device = new Device();
+
+        $device->name = $request->name;
+        $device->category_id = $request->category_id;
+        $device->mac_address = $request->mac_address;
+
+        $device->save();
+
+        return redirect()->route('devices.index');
     }
 
     /**

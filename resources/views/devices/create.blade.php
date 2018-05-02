@@ -15,23 +15,24 @@
 
 <div class="container">
     <form method="POST" action=" {{ route('devices.store') }}">
+        {{csrf_field()}}
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="name" class="form-control" id="name"
+            <input type="name" class="form-control" id="name" name="name"
                    placeholder="Enter name">
         </div>
         <div class="form-group">
             <label for="mac_address">MAC Address</label>
-            <input type="mac_address" class="form-control" id="mac_address"
+            <input type="mac_address" class="form-control" id="mac_address" name="mac_address"
                    placeholder="Enter MAC Address">
         </div>
 
         <div class="form-group">
             <label for="category_id">Device Category</label>
-            <select class="form-control" id="category_id">
-                <option>Gas</option>
-                <option>Water</option>
-                <option>Electric</option>
+            <select class="form-control" id="category_id" name="category_id">
+                <option value="1" >Gas</option>
+                <option value="1" >Water</option>
+                <option value="1" >Electric</option>
             </select>
         </div>
 
