@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Test Change. Make a change/
+                    Laravel Test Change.
                 </div>
 
                 <div class="links">
