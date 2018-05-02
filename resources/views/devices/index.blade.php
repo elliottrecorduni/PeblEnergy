@@ -1,10 +1,13 @@
+@extends('layouts.master')
 
 
-@foreach($devices as $device)
+@section('content')
 
-    <h1>Device: {{$device->name}}
-    {{$device->created_at->diffForHumans()}}</h1>
+    @foreach($devices as $device)
 
-@endforeach
+        <h1>Device: {{$device->name}}
+            <button type="button" class="btn btn-info">Info</button></h1>
 
-{{-- Test Comment--}}
+    @endforeach
+
+@endsection
