@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevicesTable extends Migration
+class CreateEnergyUsagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateDevicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
+        Schema::create('energy_usages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('category_id')->unsigned();
-            $table->string('mac_address', 17);
-            $table->boolean('is_legacy')->default(TRUE);
+            $table->integer('device_id')->unsigned();
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->double('kw_usage', 8, 4);
 
-            $table->foreign('category_id')->references('id')->on('device_categories');
+            $table->foreign('device_id')->references('id')->on('devices');
 
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateDevicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        Schema::dropIfExists('energy_usages');
     }
 }
