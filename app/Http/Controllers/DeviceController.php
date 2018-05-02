@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -25,7 +26,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-
+        return view('devices.create');
     }
 
     /**
@@ -36,7 +37,7 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $device = new Device();
     }
 
     /**
@@ -47,7 +48,7 @@ class DeviceController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
