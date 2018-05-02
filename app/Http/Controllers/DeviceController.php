@@ -13,7 +13,9 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
+        $test = 5;
+
+        return view('devices.index', compact('test'));
     }
 
     /**
