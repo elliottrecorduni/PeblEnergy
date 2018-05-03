@@ -10,8 +10,7 @@
             <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
             <link rel="stylesheet" href="css/bootstrap.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
-                  integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-                  crossorigin="anonymous">
+                  integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
             <link rel="stylesheet" href="css/style.css">
         </head>
 <body>
@@ -37,7 +36,7 @@
             </li>
 
             <li class="nav-item text-dark dropdown" style="padding-right:4.5em">
-                <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
+                <a class="nav-link dropdown-toggle text-dark" href="#"  role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user"></i> Username
                 </a>
@@ -51,10 +50,8 @@
         </div>
         <div class="hide-navbar">
             <ul class="nav flex-column" id="verticalNavBar">
-                <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i>
-                        Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="budget.html"><i
-                                class="fas fa-money-bill-alt text-dark"></i> Budget</a>
+                <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-mobile-alt text-dark"></i>
                         Devices</a></li>
@@ -70,19 +67,14 @@
 <div class="container-fluid h-100">
     <div class="row h-100">
         <div class="sidebar navbar-light bg-light pt-2 h-1000">
-            <div class="col-2 collapse d-md-flex navbar-light bg-light pt-2 h-1000" id="sidebar"
-                 style="max-width:140px;"> <!-- collapse -->
+            <div class="col-2 collapse d-md-flex navbar-light bg-light pt-2 h-1000" id="sidebar" style="max-width:140px;"> <!-- collapse -->
                 <ul class="nav flex-column">
-                    <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i>
-                            Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="budget.html"><i
-                                    class="fas fa-money-bill-alt text-dark"></i> Budget</a>
+                    <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="devices.html"><i
-                                    class="fas fa-mobile-alt text-dark"></i>
+                    <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>
                             Devices</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog text-dark"></i> Settings</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog text-dark"></i> Settings</a></li>
                 </ul>
 
             </div>
@@ -100,18 +92,13 @@
                         <div class="card">
                             <div class="card-header bg-dark text-white">
                                 Active Devices
-                                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newDevModal"
-                                        style="float:right">New Device
-                                </button>
-                                <div class="modal fade" id="newDevModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="newDevModalLabel" aria-hidden="true">
+                                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newDevModal" style="float:right">New Device</button>
+                                <div class="modal fade" id="newDevModal" tabindex="-1" role="dialog" aria-labelledby="newDevModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-dark" id="newDevModalLabel">Add New
-                                                    Device</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                <h5 class="modal-title text-dark" id="newDevModalLabel">Add New Device</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -119,24 +106,19 @@
                                                 <form>
                                                     <div class="form-group">
                                                         <label for="inputDevice" class="text-dark">Device Name:</label>
-                                                        <input type="text" class="form-control" id="deviceName"
-                                                               aria-describedby="emailHelp"
-                                                               placeholder="Enter Device Name">
+                                                        <input type="text" class="form-control" id="deviceName" aria-describedby="emailHelp" placeholder="Enter Device Name">
                                                     </div>
 
 
                                                     <div class="form-group">
                                                         <label for="inputDevice" class="text-dark">MAC Address:</label>
-                                                        <input type="text" class="form-control" id="macAddress"
-                                                               aria-describedby="emailHelp"
-                                                               placeholder="Enter MAC Address">
+                                                        <input type="text" class="form-control" id="macAddress" aria-describedby="emailHelp" placeholder="Enter MAC Address">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="deviceType" class="text-dark">Device Type:</label>
                                                         <select class="form-control" id="deviceType">
-                                                            <option value="" disabled selected>Select Device Type
-                                                            </option>
+                                                            <option value="" disabled selected>Select Device Type</option>
                                                             <option>Electricity</option>
                                                             <option>Water</option>
                                                             <option>Gas</option>
@@ -144,9 +126,7 @@
                                                     </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Close
-                                                </button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <button type="button" class="btn btn-success">Confirm</button>
                                             </div>
                                         </div>
@@ -164,32 +144,49 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <th>Fridge</th>
+                                        <td>4 kW</td>
+                                        <td class="text-center border border-dark" style="background-color: #61EC10"><strong>Online</strong></td>
+                                        <td class="text-center"><a href="#dashboardModal" data-toggle="modal" data-target="#dashboardModal"><i class="fas fa-info-circle text-primary"></i></a></td>
 
-                                    @foreach($devices as $device)
-                                        <tr>
-                                            <td>Device: {{$device->name}}</td>
-                                            <td><a class="btn btn-info" href="{{route('devices.edit', $device->id)}}">Show</a>
-                                            </td>
-                                            <td>
-                                                <form method="POST" action="{{route('devices.destroy', $device->id)}}">
-                                                    {{csrf_field()}}
-                                                    {{method_field('DELETE')}}
-                                                    <input type="submit" class="btn btn-danger" value="Delete">
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    </tr>
+                                    <tr>
+                                        <th>Kettle</th>
+                                        <td>3 kW</td>
+                                        <td class="text-center text-white border border-dark" style="background-color: red"><strong>Offline</strong></td>
+                                        <td class="text-center"><i class="fas fa-info-circle text-primary"></i></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Kettle 2</th>
+                                        <td>4 kW</td>
+                                        <td class="text-center border border-dark" style="background-color: #61EC10"><strong>Online</strong></td>
+                                        <td class="text-center"><i class="fas fa-info-circle text-primary"></i></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Kettle 3</th>
+                                        <td>3 kW/s</td>
+                                        <td class="text-center border border-dark" style="background-color: #61EC10"><strong>Online</strong></td>
+                                        <td class="text-center"><a><i class="fas fa-info-circle text-primary"></i></a></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Kettle 4</th>
+                                        <td>3 kW/s</td>
+                                        <td class="text-center border border-dark" style="background-color: #61EC10"><strong>Online</strong></td>
+                                        <td class="text-center"><i class="fas fa-info-circle text-primary"></i></td>
+
+                                    </tr>
 
                                     <!--DASHBOARD MODAL -->
-                                    <div class="modal fade" id="dashboardModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="dashboardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="dashboardModalLabel">Device
-                                                        Dashboard</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                    <h5 class="modal-title" id="dashboardModalLabel">Device Dashboard</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -198,31 +195,18 @@
                                                         <!--Navbar Start-->
                                                         <div class="col-md-3">
                                                             <div class="sidebar pt-2 h-1000">
-                                                                <div class="col-2 collapse d-md-flex pt-2 h-1000"
-                                                                     id="sidebar" style="max-width:140px;">
-                                                                    <!-- collapse -->
+                                                                <div class="col-2 collapse d-md-flex pt-2 h-1000" id="sidebar" style="max-width:140px;"> <!-- collapse -->
                                                                     <ul class="nav flex-column">
                                                                         <h2>Trends</h2>
                                                                         <br>
                                                                         <!--<button id="trend1">Hide</button>-->
                                                                         <!--<button id="trend2">Hide</button>-->
-                                                                        <li class="nav-item "><a class="nav-link"
-                                                                                                 id="trend1" href="#"><i
-                                                                                        class="fas fa-home text-dark"></i>
-                                                                                Trend 1</a></li>
-                                                                        <li class="nav-item"><a class="nav-link"
-                                                                                                id="trend2" href="#"><i
-                                                                                        class="fas fa-money-bill-alt text-dark"></i>
-                                                                                Trend 2</a>
+                                                                        <li class="nav-item "><a class="nav-link" id="trend1" href="#"><i class="fas fa-home text-dark"></i> Trend 1</a></li>
+                                                                        <li class="nav-item"><a class="nav-link" id="trend2" href="#"><i class="fas fa-money-bill-alt text-dark"></i> Trend 2</a>
                                                                         </li>
-                                                                        <li class="nav-item"><a class="nav-link"
-                                                                                                id="trend3" href="#"><i
-                                                                                        class="fas fa-mobile-alt text-dark"></i>
+                                                                        <li class="nav-item"><a class="nav-link" id="trend3" href="#"><i class="fas fa-mobile-alt text-dark"></i>
                                                                                 Trend 3</a></li>
-                                                                        <li class="nav-item"><a class="nav-link"
-                                                                                                id="trend4" href="#"><i
-                                                                                        class="fas fa-cog text-dark"></i>
-                                                                                Trend 4</a></li>
+                                                                        <li class="nav-item"><a class="nav-link" id="trend4" href="#"><i class="fas fa-cog text-dark"></i> Trend 4</a></li>
                                                                     </ul>
 
                                                                 </div>
@@ -234,13 +218,15 @@
                                                         <!--Graph Start-->
                                                         <div class="col-md-9">
                                                             <canvas id="waterBudget7D"></canvas>
-                                                            <canvas id="gasBudget7D" style="display: none"></canvas>
+                                                            <canvas id="gasBudget7D" style="display: none" ></canvas>
                                                             <canvas id="elecBudget7D" style="display: none"></canvas>
                                                             <canvas id="totalBudget7D" style="display: none"></canvas>
                                                         </div>
                                                         <!--Graph End-->
 
                                                     </div>
+
+
 
 
                                                 </div>
@@ -274,23 +260,17 @@
 
                                     <p><b>Added On:</b> 01/05/18</p>
                                     <div style="padding-top: 10px">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">
-                                            Edit
-                                        </button>
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                                            Delete
-                                        </button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
                                     </div>
 
                                     <!--EDIT MODAL-->
-                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="editModalLabel">Edit Device</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -298,15 +278,11 @@
                                                     <form>
                                                         <div class="form-group">
                                                             <label for="inputDevice">Device Name</label>
-                                                            <input type="text" class="form-control" id="inputDevice"
-                                                                   aria-describedby="emailHelp"
-                                                                   placeholder="Enter Device Name">
+                                                            <input type="text" class="form-control" id="inputDevice" aria-describedby="emailHelp" placeholder="Enter Device Name">
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <button type="button" class="btn btn-success">Confirm</button>
                                                 </div>
                                             </div>
@@ -315,14 +291,12 @@
                                     <!--END EDIT MODAL-->
 
                                     <!--DELETE MODAL-->
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="deleteModalLabel">Delete Device</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -330,9 +304,7 @@
                                                     Are you sure you wish to delete this device?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <button type="button" class="btn btn-danger">Delete</button>
                                                 </div>
                                             </div>
@@ -468,37 +440,37 @@
     </script>
 
     <script>
-        $(document).ready(function () {
-            $("#hide").click(function () {
+        $(document).ready(function(){
+            $("#hide").click(function(){
                 $("p").hide();
             });
-            $("#show").click(function () {
+            $("#show").click(function(){
                 $("p").show();
             });
         });
     </script>
 
     <script>
-        $(document).ready(function () {
-            $("#trend1").click(function () {
+        $(document).ready(function(){
+            $("#trend1").click(function(){
                 $("#waterBudget7D").show();
                 $("#elecBudget7D").hide();
                 $("#gasBudget7D").hide();
                 $("#totalBudget7D").hide();
             });
-            $("#trend2").click(function () {
+            $("#trend2").click(function(){
                 $("#waterBudget7D").hide();
                 $("#elecBudget7D").show();
                 $("#gasBudget7D").hide();
                 $("#totalBudget7D").hide();
             });
-            $("#trend3").click(function () {
+            $("#trend3").click(function(){
                 $("#waterBudget7D").hide();
                 $("#elecBudget7D").hide();
                 $("#gasBudget7D").show();
                 $("#totalBudget7D").hide();
             });
-            $("#trend4").click(function () {
+            $("#trend4").click(function(){
                 $("#waterBudget7D").hide();
                 $("#elecBudget7D").hide();
                 $("#gasBudget7D").hide();
@@ -509,4 +481,3 @@
     </script>
 </body>
 </html>
-
