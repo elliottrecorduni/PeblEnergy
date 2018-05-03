@@ -9,11 +9,11 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <!--New Device Modal Card-->
                         <div class="card">
                             <div class="card-header bg-dark text-white">
-                                Active Devices
+                                Devices
                                 <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newDevModal"
                                         style="float:right">New Device
                                 </button>
@@ -29,51 +29,49 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="inputDevice" class="text-dark">Device Name:</label>
-                                                        <input type="text" class="form-control" id="deviceName"
-                                                               aria-describedby="emailHelp"
-                                                               placeholder="Enter Device Name">
-                                                    </div>
+                                            <form method="POST" action="{{ route('devices.store') }}">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <label for="name" class="text-dark">Device Name:</label>
+                                                    <input type="text" class="form-control" id="name" name="name"
+                                                           placeholder="Enter Device Name">
+                                                </div>
 
 
-                                                    <div class="form-group">
-                                                        <label for="inputDevice" class="text-dark">MAC Address:</label>
-                                                        <input type="text" class="form-control" id="macAddress"
-                                                               aria-describedby="emailHelp"
-                                                               placeholder="Enter MAC Address">
-                                                    </div>
+                                                <div class="form-group">
+                                                    <label for="mac_address" class="text-dark">MAC Address:</label>
+                                                    <input type="text" class="form-control" id="mac_address" name="mac_address"
+                                                           placeholder="Enter MAC Address">
+                                                </div>
 
-                                                    <div class="form-group">
-                                                        <label for="deviceType" class="text-dark">Device Type:</label>
-                                                        <select class="form-control" id="deviceType">
-                                                            <option value="" disabled selected>Select Device Type
-                                                            </option>
-                                                            <option>Electricity</option>
-                                                            <option>Water</option>
-                                                            <option>Gas</option>
-                                                        </select>
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-success">Confirm</button>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label for="category_id" class="text-dark">Device Type:</label>
+                                                    <select class="form-control" id="category_id" name="category_id">
+                                                        <option value="" disabled selected>Select Device Type
+                                                        </option>
+                                                        <option value="1">Electricity</option>
+                                                        <option value="1">Water</option>
+                                                        <option value="1">Gas</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <input type="submit" value="Confirm" class="btn btn-success">
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table class="table table-dark">
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Device</th>
-                                        <th scope="col">Monthly Usage</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">MAC Address</th>
+                                        <th scope="col">Actions</th>
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
@@ -82,9 +80,9 @@
                                     @foreach($devices as $device)
                                         <tr>
                                             <td>Device: {{$device->name}}</td>
-                                            <td><a class="btn btn-info" href="{{route('devices.edit', $device->id)}}"><i class="fa fa-address-card" aria-hidden="true"></i></a>
-                                            </td>
+                                            <td>Device: {{$device->mac_address}}</td>
                                             <td>
+                                                <a class="btn btn-info" href="{{route('devices.edit', $device->id)}}">Edit</a>
                                                 <form method="POST" action="{{route('devices.destroy', $device->id)}}">
                                                     {{csrf_field()}}
                                                     {{method_field('DELETE')}}
@@ -173,91 +171,6 @@
 
                         </div>
 
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card card-padding">
-                            <div class="card-header bg-dark text-white">
-                                Device Info
-                            </div>
-                            <div class="card-body">
-                                <div style="padding-left: 12px">
-                                    <p><b>Name:</b> Fridge</p>
-
-                                    <p><b>Status:</b> <span style="color:#61EC10"> Online</span></p>
-
-                                    <p><b>Added On:</b> 01/05/18</p>
-                                    <div style="padding-top: 10px">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">
-                                            Edit
-                                        </button>
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                                            Delete
-                                        </button>
-                                    </div>
-
-                                    <!--EDIT MODAL-->
-                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="editModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="editModalLabel">Edit Device</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label for="inputDevice">Device Name</label>
-                                                            <input type="text" class="form-control" id="inputDevice"
-                                                                   aria-describedby="emailHelp"
-                                                                   placeholder="Enter Device Name">
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-success">Confirm</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--END EDIT MODAL-->
-
-                                    <!--DELETE MODAL-->
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel">Delete Device</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you wish to delete this device?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--END DELETE MODAL-->
-
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
 
                     <!--End Active Devices -->
