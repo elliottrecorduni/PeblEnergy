@@ -6,4 +6,4 @@ DEVICES PAGE
 - Fix vertical nav height
 
 MISC
-
+-didnt fix all links
