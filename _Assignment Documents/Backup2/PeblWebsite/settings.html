@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.min.css">
 </head>
 <body>
 <!--Horizontal Navbar start -->
@@ -64,7 +65,7 @@
     <div class="row h-100">
         <div class="sidebar navbar-light bg-light pt-2 h-1000">
             <div class="col-2 collapse d-md-flex navbar-light bg-light pt-2 h-1000" id="sidebar" style="max-width:140px;"> <!-- collapse -->
-                <ul class="nav flex-column">
+                <ul class="nav flex-column text-center">
                     <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                     </li>
@@ -100,6 +101,14 @@
                             <div class="card-header bg-dark text-white">
                                 Budget Settings
                             </div>
+                            <div class="card-body">
+                                <div>
+                                    <form>
+                                        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                                    </form>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -151,6 +160,18 @@
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.min.js"></script>
+
+<script>
+
+    var slider = new Slider('#ex1', {
+        formatter: function(value) {
+            return 'Curr' +
+                'ent value: ' + value;
+        }
+    });
+
+</script>
 
 </body>
 </html>

@@ -13,3 +13,4 @@ DEVICES PAGE
 
 MISC
 - Add navigation links to every page (including tablet view)
+- completely align vertical nav
