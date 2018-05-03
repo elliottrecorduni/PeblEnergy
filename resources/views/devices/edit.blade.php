@@ -1,9 +1,4 @@
-@extends('layouts.master')
-
-
-@section('content')
-
-    <form method="POST" action=" {{ route('devices.update', $device->id) }}">
+    <form method="POST" action=" {{ route('devices.update', $device->id) }}" id="devices_edit_form">
         {{csrf_field()}}
         {{ method_field('PUT') }}
         <div class="form-group">
@@ -25,8 +20,4 @@
                 <option value="1" >Electric</option>
             </select>
         </div>
-
-        <button type="submit" class="btn btn-primary">Update</button>
     </form>
-
-@endsection
