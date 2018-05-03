@@ -1,10 +1,22 @@
+@extends('layouts.master')
 
 
-@foreach($devices as $device)
+@section('content')
 
-    <h1>Device: {{$device->name}}
-    {{$device->created_at->diffForHumans()}}</h1>
+    @foreach($devices as $device)
 
-@endforeach
+        <h1>
 
-{{-- Test Comment--}}
+
+            <form method="POST" action="{{route('devices.destroy', $device->id)}}">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+                Device: {{$device->name}}
+                <a class="btn btn-info" href="{{route('devices.edit', $device->id)}}">Show</a>
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+        </h1>
+
+    @endforeach
+
+@endsection
