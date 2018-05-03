@@ -1,6 +1,8 @@
+//jQuery
+window.$ = window.jQuery = require('jquery');
 
-//Bootstrap 4
-require('bootstrap');
+//Bootstrap 4 and Popper.js
+require('bootstrap/dist/js/bootstrap.bundle.min');
 
 //FontAwesome 5
 require('@fortawesome/fontawesome');
