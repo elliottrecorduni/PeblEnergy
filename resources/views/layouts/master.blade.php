@@ -1,36 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Pebl Energy</title>
-
-    @yield('header')
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
 
-<div class="container">
-    @yield('content')
+@include('layouts.partials._nav')
+
+<!-- Vertical Navbar start -->
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="sidebar navbar-light bg-light pt-2 h-1000">
+            <div class="col-2 collapse d-md-flex navbar-light bg-light pt-2 h-1000" id="sidebar" style="max-width:140px;"> <!-- collapse -->
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i>Budget</a></li>
+                    <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-cog text-dark"></i>Settings</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        @include('layouts.partials._messages')
+
+        @yield('content')
+    </div>
+
+
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
+<script src="{{asset('js/app.js')}}"></script>
 
-@yield('footer')
+</body>
 </html>
