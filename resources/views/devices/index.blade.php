@@ -63,6 +63,8 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            @if ($devices->count() > 0)
+
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -116,6 +118,12 @@
                                 </div>
                                 </tbody>
                             </table>
+
+                            @else
+                                <div class="alert alert-info" role="alert">
+                                    You currently have no devices registered, why not <a href="" data-toggle="modal" data-target="#newDevModal">add one</a>?
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
