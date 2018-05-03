@@ -1,16 +1,9 @@
 WEBSITE TODO LIST
 
 REDESIGN HOME PAGE
-- get rid of graphs
-- active devices table (add an edit and delete column)
-- clicking device name brings up usage graph for that device as a modal popup.
-- clicking edit brings up an option to edit the device name as a modal popup.
-- clicking delete brings up an option to delete the device as a modal popup.
 
 DEVICES PAGE
-- Border around status box
 - Fix vertical nav height
 
 MISC
-- Add navigation links to every page (including tablet view)
-- completely align vertical nav
+

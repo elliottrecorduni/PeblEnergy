@@ -14,7 +14,7 @@
 <body>
 <!--Horizontal Navbar start -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="">
-    <a class="navbar-brand" href="#">PEBL - Smart Energy</a>
+    <a class="navbar-brand" href="index.html">PEBL - Smart Energy</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,12 +48,12 @@
         </div>
         <div class="hide-navbar">
             <ul class="nav flex-column" id="verticalNavBar">
-                <li class="nav-item "><a class="nav-link" href="#"><i class="fas fa-home text-dark"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
+                <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-mobile-alt text-dark"></i>
+                <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>
                     Devices</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog text-dark"></i> Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-cog text-dark"></i> Settings</a></li>
             </ul>
 
         </div>
@@ -72,7 +72,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>
                         Devices</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog text-dark"></i> Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-cog text-dark"></i> Settings</a></li>
                 </ul>
 
             </div>
@@ -90,7 +90,7 @@
                 <div class="row">
 
                     <div class="col-md-4">
-                        <div class="card card-padding" style="height:258px">
+                        <div class="card card-padding">
                             <div class="card-header bg-dark text-white">
                                 User Settings
                             </div>
@@ -164,23 +164,18 @@
                                      <div class="form-group">
                                         <p>Electricity Budget:</p>
                                         <input  id="elec" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                        data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                                        <label for="elec" id="elecValue"></label>
+                                        data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                         <span style="padding-left: 10px">£<label for="elec" id="elecValue"></label></span>
 
                                         <p>Water Budget:</p>
                                         <input  id="water" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                                        <label for="water" id="waterValue"></label>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                         <span style="padding-left: 10px">£<label for="water" id="waterValue"></label></span>
 
                                         <p>Gas Budget:</p>
                                         <input  id="gas" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                                        <label for="gas" id="gasValue"></label>
-
-                                        <p>Total Budget:</p>
-                                        <input  id="total" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                                        <label for="total" id="totalValue"></label>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                         <span style="padding-left: 10px">£<label for="gas" id="gasValue"></label></span>
                                         <br>
                                         <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
                                         </div>
