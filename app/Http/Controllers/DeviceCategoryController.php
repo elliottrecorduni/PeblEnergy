@@ -24,7 +24,7 @@ class DeviceCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('device_categories.create');
     }
 
     /**
