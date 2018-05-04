@@ -33,7 +33,7 @@
         </div>
         <div class="hide-navbar">
             <ul class="nav flex-column" id="verticalNavBar">
-                <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
+                <li class="nav-item "><a class="nav-link" href="{{route('page.index')}}"><i class="fas fa-home text-dark"></i> Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>
