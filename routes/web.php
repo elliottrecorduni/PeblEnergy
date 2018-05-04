@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/devices', 'DeviceController');
 Route::resource('/device-categories', 'DeviceCategoryController');
-Route::resource('/user', 'UserController')->only;
+Route::resource('/user', 'UserController');

@@ -47,7 +47,6 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
         return view('', compact('user'));
     }
 
@@ -59,7 +58,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = User::find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
