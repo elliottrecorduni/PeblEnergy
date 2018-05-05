@@ -14,7 +14,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::all();
+        $devices = Device::all()->where('is_legacy', '=', false);
 
         return view('devices.index', compact('devices'));
     }

@@ -14,11 +14,11 @@ class CreateDevicesTable extends Migration
     public function up()
     {
         Schema::create('devices', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('category_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
             $table->string('mac_address', 17);
-            $table->boolean('is_legacy')->default(TRUE);
+            $table->boolean('is_legacy')->default(FALSE);
 
             $table->foreign('category_id')->references('id')->on('device_categories');
 

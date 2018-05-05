@@ -15,7 +15,7 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            @if ($devices->count() > 0)
+                            @if (!$devices || $devices->count() > 0)
 
                                 <table class="table">
                                     <thead>
