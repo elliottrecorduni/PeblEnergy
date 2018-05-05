@@ -15,9 +15,15 @@
         <div class="form-group">
             <label for="category_id">Device Category</label>
             <select class="form-control" id="category_id" name="category_id" value="{{ $device->category_id }}">
-                <option value="1" >Gas</option>
-                <option value="1" >Water</option>
-                <option value="1" >Electric</option>
+                @foreach ($deviceCategories as $category)
+
+                    @if ($device->category_id == $category->id)
+                        <option selected value="{{$category->id}}">{{$category->name}}</option>
+                    @else
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endif
+
+                @endforeach
             </select>
         </div>
     </form>

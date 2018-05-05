@@ -9,7 +9,7 @@
                     <!--New Category Card-->
                     <div class="card">
                         <div class="card-header bg-dark text-white">
-                            Devices
+                            Categories
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#new_category_modal"
                                     style="float:right">New Category
                             </button>
@@ -88,7 +88,7 @@
 
                             @else
                                 <div class="alert alert-info" role="alert">
-                                    You currently have no devices registered, why not <a href="" data-toggle="modal"
+                                    There are currently no categories, why not <a href="" data-toggle="modal"
                                                                                          data-target="#new_category_modal">add
                                         one</a>?
                                 </div>

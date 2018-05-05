@@ -97,56 +97,7 @@
                                 </div>
                             @endif
 
-                            <div class="modal fade" id="new_device_modal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-dark" id="new_device_modal_label">Add New Device</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                            <form method="POST" action="{{ route('devices.store') }}">
-                                                {{ csrf_field() }}
-                                                <div class="form-group">
-                                                    <label for="name" class="text-dark">Device Name:</label>
-                                                    <input type="text" class="form-control" id="name" name="name"
-                                                           placeholder="Enter Device Name">
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="mac_address" class="text-dark">MAC Address:</label>
-                                                    <input type="text" class="form-control" id="mac_address"
-                                                           name="mac_address"
-                                                           placeholder="Enter MAC Address">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="category_id" class="text-dark">Device Type:</label>
-                                                    <select class="form-control" id="category_id" name="category_id">
-                                                        <option value="" disabled selected>Select Device Type
-                                                        </option>
-                                                        <option value="1">Electricity</option>
-                                                        <option value="1">Water</option>
-                                                        <option value="1">Gas</option>
-                                                    </select>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <input type="submit" value="Confirm" class="btn btn-success">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('devices.create')
 
                         </div>
                     </div>
