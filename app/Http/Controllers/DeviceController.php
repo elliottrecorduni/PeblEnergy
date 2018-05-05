@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\DeviceCategory;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -14,9 +15,12 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::all();
+        $devices = Device::all()->where('is_legacy', '=', false);
 
-        return view('devices.index', compact('devices'));
+        $deviceCategories = DeviceCategory::orderBy('name')->get();
+
+
+        return view('devices.index', compact('devices', 'deviceCategories'));
     }
 
     /**
@@ -69,7 +73,9 @@ class DeviceController extends Controller
     {
         $device = Device::find($id);
 
-        return view('devices.edit', compact('device'));
+        $deviceCategories = DeviceCategory::orderBy('name')->get();
+
+        return view('devices.edit', compact('device', 'deviceCategories'));
     }
 
     /**
@@ -98,9 +104,10 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Device $device)
     {
-        Device::destroy($id);
+        $device->is_legacy = true;
+        $device->save();
 
         return redirect()->route('devices.index');
     }
