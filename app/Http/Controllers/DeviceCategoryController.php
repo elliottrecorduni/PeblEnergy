@@ -14,8 +14,8 @@ class DeviceCategoryController extends Controller
      */
     public function index()
     {
-        return view('device_categories.index');
-
+        $categories = DeviceCategory::all();
+        return view('device_categories.index', compact('categories'));
     }
 
     /**
@@ -36,7 +36,13 @@ class DeviceCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new DeviceCategory();
+
+        $category->name = $request->name;
+
+        $category->save();
+
+        return redirect()->route('device-categories.index');
     }
 
     /**
