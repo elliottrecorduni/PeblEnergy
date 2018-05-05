@@ -18,7 +18,8 @@
                 <span class="badge badge-danger">Please set a Category</span>
             @endif
             <select class="form-control" id="category_id" name="category_id" value="{{ $device->category_id }}">
-                @foreach ($deviceCategories as $category)
+                <option selected disabled>Category</option>
+            @foreach ($deviceCategories as $category)
 
                     @if ($device->category_id == $category->id)
                         <option selected value="{{$category->id}}">{{$category->name}}</option>
