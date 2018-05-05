@@ -90,6 +90,14 @@ class DeviceCategoryController extends Controller
      */
     public function destroy(DeviceCategory $deviceCategory)
     {
-        //
+        //Unlink each device from this Category so there's no foreign key constraint issue on delete.
+        $deviceCategory->devices()->each(function($device){
+            $device->category()->dissociate();
+            $device->save();
+        });
+
+        $deviceCategory->delete();
+
+        return redirect()->route('device-categories.index');
     }
 }

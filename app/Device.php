@@ -10,4 +10,7 @@ class Device extends Model
         'is_legacy' => 'boolean'
     ];
 
+    public function category(){
+        return $this->belongsTo('App\DeviceCategory', 'category_id');
+    }
 }
