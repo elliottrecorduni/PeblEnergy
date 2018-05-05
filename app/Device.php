@@ -13,4 +13,14 @@ class Device extends Model
     public function category(){
         return $this->belongsTo('App\DeviceCategory', 'category_id');
     }
+
+    public function getMissingInformationAttribute(){
+            $attributes = ['name', 'category_id', 'mac_address'];
+            foreach ($attributes as $attribute) {
+                if (empty($this->$attribute)) {
+                    return true;
+                }
+            }
+            return false;
+    }
 }

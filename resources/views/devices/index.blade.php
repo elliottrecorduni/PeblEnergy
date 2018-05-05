@@ -23,17 +23,19 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">MAC Address</th>
                                         <th scope="col">Actions</th>
-                                        <th scope="col"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
                                     @foreach($devices as $device)
                                         <tr>
-                                            <td>{{$device->name}}</td>
+                                            <td>{{$device->name}}
+                                                @if ( $device->missing_information ) )
+                                                    <span style="position: absolute;" class="badge badge-danger ml-3">Missing Information</span>
+                                                @endif</td>
                                             <td>{{$device->mac_address}}</td>
                                             <td>
-                                                <a class="btn btn-info text-light" onclick="activateEditDevModal({{$device->id}})">Edit</a>
+                                                <a class="btn btn-info text-light"  onclick="activateEditDevModal({{$device->id}})">Edit</a>
                                                 <a class="btn btn-danger text-light" data-toggle="modal" data-target="#delete_device_modal">Delete</a>
                                             </td>
                                         </tr>

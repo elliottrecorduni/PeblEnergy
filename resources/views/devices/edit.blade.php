@@ -14,6 +14,9 @@
 
         <div class="form-group">
             <label for="category_id">Device Category</label>
+            @if ( is_null($device->category_id) )
+                <span class="badge badge-danger">Please set a Category</span>
+            @endif
             <select class="form-control" id="category_id" name="category_id" value="{{ $device->category_id }}">
                 @foreach ($deviceCategories as $category)
 
