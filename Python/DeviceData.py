@@ -15,7 +15,7 @@ end_time = None
 data = None
 
 HOST_NAME = 'google.com'  # link to page where data should be posted
-interval = 3.0  # time between sending data to server in seconds
+interval = 30.0  # time between sending data to server in seconds
 
 # getting device MAC address
 mac = get_mac()
@@ -35,10 +35,10 @@ def ping(host):
         stdout, stderr = proc.communicate()
         if proc.returncode == 0:
             server_up = True
-            print('True')
+            #print('True')
         else:
             server_up = False
-            print('False')
+            #print('False')
 
     else:
         proc = subprocess.Popen(
@@ -83,7 +83,7 @@ def sendData():
             headers = {'Content-type': 'application/json'}
             
             r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
-            print('posted data to server: ' + str(to_post))
+            # print('posted data to server: ' + str(to_post))
     else:
         print('Network error')
 
