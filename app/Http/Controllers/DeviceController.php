@@ -98,9 +98,10 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Device $device)
     {
-        Device::destroy($id);
+        $device->is_legacy = true;
+        $device->save();
 
         return redirect()->route('devices.index');
     }
