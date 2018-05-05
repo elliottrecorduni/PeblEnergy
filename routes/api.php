@@ -1,5 +1,6 @@
 <?php
 
+use App\Device;
 use App\EnergyUsage;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/submit', function (Request $request) {
 
+    $device = Device::all()->where('mac_address', '=', $request->mac_address);
+
     $energy_usage = new EnergyUsage();
 
-    $energy_usage->device_id = 2;
+    $energy_usage->device_id = $device->id;
     $energy_usage->start_time = $request->start_time;
     $energy_usage->end_time = $request->end_time;
     $energy_usage->kw_usage = $request->kw_usage;

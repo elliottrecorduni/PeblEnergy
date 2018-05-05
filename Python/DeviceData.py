@@ -74,7 +74,6 @@ def sendData():
         threading.Timer(interval, sendData).start()
         ping(HOST_NAME)
         now = datetime.datetime.now()
-        now.strftime('%Y-%m-%d %H:%M:%S')
         if server_up:
             
             to_post = {'mac_address': s, 'kw_usage': round(random.uniform(0, 1), 2), 'Status': 'Alive', 'start_time': str(now)

@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('category_id')->unsigned()->nullable();
-            $table->string('mac_address', 17);
+            $table->string('mac_address', 17)->unique();
             $table->boolean('is_legacy')->default(FALSE);
 
             $table->foreign('category_id')->references('id')->on('device_categories');
