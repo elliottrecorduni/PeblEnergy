@@ -1,4 +1,4 @@
-    <form method="POST" action=" {{ route('devices.update', $device->id) }}" id="devices_edit_form">
+    <form method="POST" action=" {{ route('devices.update', $device->id) }}">
         {{csrf_field()}}
         {{ method_field('PUT') }}
         <div class="form-group">

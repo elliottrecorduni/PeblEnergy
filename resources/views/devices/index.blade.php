@@ -91,7 +91,7 @@
 
                             @else
                                 <div class="alert alert-info" role="alert">
-                                    You currently have no devices registered, why not <a href="" data-toggle="modal"
+                                    You currently have no active devices registered, why not <a href="" data-toggle="modal"
                                                                                          data-target="#new_device_modal">add
                                         one</a>?
                                 </div>

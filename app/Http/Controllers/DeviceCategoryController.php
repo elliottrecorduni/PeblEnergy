@@ -64,7 +64,7 @@ class DeviceCategoryController extends Controller
      */
     public function edit(DeviceCategory $deviceCategory)
     {
-        //
+        return view('device_categories.edit', compact('deviceCategory'));
     }
 
     /**
@@ -76,7 +76,10 @@ class DeviceCategoryController extends Controller
      */
     public function update(Request $request, DeviceCategory $deviceCategory)
     {
-        //
+        $deviceCategory->name = $request->name;
+        $deviceCategory->save();
+
+        return redirect()->route('device-categories.index');
     }
 
     /**

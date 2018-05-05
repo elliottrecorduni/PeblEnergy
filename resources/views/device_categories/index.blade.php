@@ -138,7 +138,7 @@
 @section('footer')
     <script>
         function activateEditCategoryModal($id){
-            $('#edit_category_modal').find('.modal-body').load('{{url('device_categories')}}/' + $id + '/edit');
+            $('#edit_category_modal').find('.modal-body').load('{{url('device-categories')}}/' + $id + '/edit');
 
             $('#edit_category_modal input[id=modal-submit]').click(function () {
                 $('#edit_category_modal form').submit();
