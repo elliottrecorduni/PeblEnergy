@@ -34,3 +34,5 @@ Route::post('/submit', function (Request $request) {
 
 });
 
+Route::get('/data', 'DataController@data');
+
