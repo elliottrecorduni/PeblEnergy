@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    {{dd($t1)}}
         <div class="col pt-2">
             <h2>
                 <a href="" data-target="#sidebar" data-toggle="collapse" class="hidden-md-up"></a>
@@ -275,7 +274,7 @@
                     label: "Overall Weekly Electricity Usage",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 150, 30, 45],
+                    data: {{json_encode($data)}},
                 }]
             },
 

@@ -15,16 +15,13 @@ use Carbon\Carbon;
 
 Route::get('/', function () {
 
-    global $t1;
-    $t1= [];
-
-    global $monday;
-    global $tuesday;
-    global $wednesday;
-    global $thursday;
-    global $friday;
-    global $saturday;
-    global $sunday;
+    $monday = 0;
+    $tuesday = 0;
+    $wednesday = 0;
+    $thursday = 0;
+    $friday = 0;
+    $saturday = 0;
+    $sunday = 0;
 
     $category = \App\DeviceCategory::all()->first();
     $devices = $category->devices()->get();
@@ -66,17 +63,17 @@ Route::get('/', function () {
         }
     }
 
-    array_push($t1, [$monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday]);
+    $data = array($monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
 
 
-    return view('pages.index', compact('t1'));
-});
+    return view('pages.index', compact('data'));
+})->name('pages.index');;
 
 Auth::routes();
 
-//Route::get('/', 'PageController@index')->name('page.index');
-Route::get('/budget', 'PageController@budget')->name('page.budget');
-Route::get('/settings', 'PageController@settings')->name('page.settings');
+//Route::get('/', 'PageController@index')->name('pages.index');
+Route::get('/budget', 'PageController@budget')->name('pages.budget');
+Route::get('/settings', 'PageController@settings')->name('pages.settings');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');

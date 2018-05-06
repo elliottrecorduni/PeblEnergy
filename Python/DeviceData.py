@@ -15,7 +15,7 @@ end_time = None
 data = None
 
 HOST_NAME = 'google.com'  # link to page where data should be posted
-interval = 30.0  # time between sending data to server in seconds
+interval = 5.0  # time between sending data to server in seconds
 
 # getting device MAC address
 mac = get_mac()
