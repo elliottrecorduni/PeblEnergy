@@ -11,28 +11,62 @@
 |
 */
 
+use Carbon\Carbon;
+
 Route::get('/', function () {
 
     global $t1;
     $t1= [];
 
-    $category = \App\DeviceCategory::all()->first();
+    global $monday;
+    global $tuesday;
+    global $wednesday;
+    global $thursday;
+    global $friday;
+    global $saturday;
+    global $sunday;
 
+    $category = \App\DeviceCategory::all()->first();
     $devices = $category->devices()->get();
 
     foreach($devices as $device){
-        foreach($device->energy_usages as $usages){
+        $usagesInRange = $device->energy_usages()->whereBetween('start_time', [\Carbon\Carbon::now()->startOfWeek(), \Carbon\Carbon::now()->endOfWeek()])->get();
 
-            //Combine all data, 1 for monday, 1 for tuesday etc.
+        foreach ($usagesInRange as $usage){
 
-            $usagesInRange = $usages->whereBetween('start_time', [\Carbon\Carbon::now()->startOfWeek()->, \Carbon\Carbon::now()->endOfWeek()])->get();
-            foreach ($usagesInRange as $usage){
-                if ($usage->)
-                array_push($t1, [$usage->kw_usage, $usage->start_time, $usage->end_time]);
+                $carbon = Carbon::parse($usage->start_time);
+
+                if ($carbon->isMonday()){
+                    $monday += $usage->kw_usage;
+                }
+
+                if ($carbon->isTuesday()){
+                    $tuesday += $usage->kw_usage;
+                }
+
+                if ($carbon->isWednesday()){
+                    $wednesday += $usage->kw_usage;
+                }
+
+                if ($carbon->isThursday()){
+                    $thursday += $usage->kw_usage;
+                }
+
+                if ($carbon->isFriday()){
+                    $friday += $usage->kw_usage;
+                }
+
+                if ($carbon->isSaturday()){
+                    $saturday += $usage->kw_usage;
+                }
+
+                if ($carbon->isSunday()){
+                    $sunday += $usage->kw_usage;
+                }
             }
-        }
     }
 
+    array_push($t1, [$monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday]);
 
 
     return view('pages.index', compact('t1'));

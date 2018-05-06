@@ -82,7 +82,7 @@ def sendData():
             headers = {'Content-type': 'application/json'}
             
             r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
-            # print('posted data to server: ' + str(to_post))
+            print('posted data to server: ' + str(json.dumps(to_post)))
     else:
         print('Network error')
 
