@@ -15,6 +15,8 @@
 Auth::routes();
 
 Route::get('/', 'PageController@index')->name('page.index');
+Route::get('/budget', 'PageController@budget')->name('page.budget');
+Route::get('/settings', 'PageController@settings')->name('page.settings');
 
 Route::resource('/devices', 'DeviceController');
 Route::resource('/device-categories', 'DeviceCategoryController');

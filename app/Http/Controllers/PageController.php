@@ -9,4 +9,12 @@ class PageController extends Controller
     public function index(){
         return view('pages.index');
     }
+
+    public function budget() {
+        return view('pages.budget');
+    }
+
+    public function settings() {
+        return view('pages.settings');
+    }
 }
