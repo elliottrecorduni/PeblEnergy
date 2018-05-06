@@ -34,36 +34,36 @@ Route::get('/', function () {
 
         foreach ($usagesInRange as $usage){
 
-                $carbon = Carbon::parse($usage->start_time);
+            $carbon = Carbon::parse($usage->start_time);
 
-                if ($carbon->isMonday()){
-                    $monday += $usage->kw_usage;
-                }
-
-                if ($carbon->isTuesday()){
-                    $tuesday += $usage->kw_usage;
-                }
-
-                if ($carbon->isWednesday()){
-                    $wednesday += $usage->kw_usage;
-                }
-
-                if ($carbon->isThursday()){
-                    $thursday += $usage->kw_usage;
-                }
-
-                if ($carbon->isFriday()){
-                    $friday += $usage->kw_usage;
-                }
-
-                if ($carbon->isSaturday()){
-                    $saturday += $usage->kw_usage;
-                }
-
-                if ($carbon->isSunday()){
-                    $sunday += $usage->kw_usage;
-                }
+            if ($carbon->isMonday()){
+                $monday += $usage->kw_usage;
             }
+
+            if ($carbon->isTuesday()){
+                $tuesday += $usage->kw_usage;
+            }
+
+            if ($carbon->isWednesday()){
+                $wednesday += $usage->kw_usage;
+            }
+
+            if ($carbon->isThursday()){
+                $thursday += $usage->kw_usage;
+            }
+
+            if ($carbon->isFriday()){
+                $friday += $usage->kw_usage;
+            }
+
+            if ($carbon->isSaturday()){
+                $saturday += $usage->kw_usage;
+            }
+
+            if ($carbon->isSunday()){
+                $sunday += $usage->kw_usage;
+            }
+        }
     }
 
     array_push($t1, [$monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday]);
@@ -74,7 +74,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'PageController@index')->name('page.index');
+Route::get('/budget', 'PageController@budget')->name('page.budget');
+Route::get('/settings', 'PageController@settings')->name('page.settings');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');
