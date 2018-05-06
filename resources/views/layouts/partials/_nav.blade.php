@@ -25,7 +25,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
+                    <a class="dropdown-item" href="{{route('page.settings')}}">Settings</a>
 
                 </div>
             </li>
@@ -33,12 +33,12 @@
         </div>
         <div class="hide-navbar">
             <ul class="nav flex-column" id="verticalNavBar">
-                <li class="nav-item "><a class="nav-link" href="index.html"><i class="fas fa-home text-dark"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="budget.html"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
+                <li class="nav-item "><a class="nav-link" href="{{route('page.index')}}"><i class="fas fa-home text-dark"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('page.budget')}}"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="devices.html"><i class="fas fa-mobile-alt text-dark"></i>
+                <li class="nav-item"><a class="nav-link" href="/devices"><i class="fas fa-mobile-alt text-dark"></i>
                         Devices</a></li>
-                <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-cog text-dark"></i> Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('page.settings')}}"><i class="fas fa-cog text-dark"></i> Settings</a></li>
             </ul>
 
         </div>
