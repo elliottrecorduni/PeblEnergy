@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,6 +13,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -47,7 +54,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('', compact('user'));
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -58,8 +65,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $edit = User::find($id);
-        return view('users.edit', compact('user'));
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -72,20 +79,41 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'email' => 'required|max:255',
-            'name' => 'required|max:255',
-            'password' => 'required|max:255'
+            'email' => 'max:255',
+            'name' => 'max:255',
+            'password' => 'max:255'
+        ]);
+//        dd($request);
+
+        $user = User::find($id);
+
+        $user->email = $request->email ?? $user->email;
+        $user->name = $request->name ?? $user->name;
+//        $user->password = $request->password ?? $user->password;
+
+        if((password_verify($request->currentpassword, $user->password))){
+            $user->save();
+            return redirect()->route('user.show', $user->id);
+        } else {
+            return redirect()->route('page.index');
+        }
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'password' => 'max:255'
         ]);
 
         $user = User::find($id);
 
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->password = $request->password;
-
-        $user->save();
-
-        return redirect()->route('user.show');
+        if((password_verify($request->currentpassword, $user->password))){
+            $user->password = $request->password;
+            $user->save();
+            return redirect()->route('user.show', $user->id);
+        } else {
+            return redirect()->route('page.index');
+        }
     }
 
     /**
