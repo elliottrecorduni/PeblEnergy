@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'PageController@index')->name('page.index');
 Route::get('/budget', 'PageController@budget')->name('page.budget');

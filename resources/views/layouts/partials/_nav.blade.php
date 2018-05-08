@@ -6,29 +6,38 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float: right">
         <div class="navbar-nav ml-auto" style="float: right">
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-exclamation-circle"></i>
-                    Notifications
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-primary" href="#">New Device: Kettle</a>
-                    <a class="dropdown-item text-primary" href="#">Weekly Budget Met!</a>
-                </div>
-            </li>
 
-            <li class="nav-item text-dark dropdown" style="padding-right:4.5em">
-                <a class="nav-link dropdown-toggle text-dark" href="#"  role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i> Username
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="{{route('page.settings')}}">Settings</a>
 
-                </div>
-            </li>
+            @if(\Illuminate\Support\Facades\Auth::check())
+
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Notifications
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-primary" href="#">New Device: Kettle</a>
+                        <a class="dropdown-item text-primary" href="#">Weekly Budget Met!</a>
+                    </div>
+                </li>
+
+                <li class="nav-item text-dark dropdown" style="padding-right:4.5em">
+                    <a class="nav-link dropdown-toggle text-dark" href="#"  role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{route('page.settings')}}">Settings</a>
+                        <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            @else
+                <a href="/register" class="btn btn-default">Register</a>
+                <a href="/login" class="btn btn-default">Login</a>
+            @endif
+
 
         </div>
         <div class="hide-navbar">
