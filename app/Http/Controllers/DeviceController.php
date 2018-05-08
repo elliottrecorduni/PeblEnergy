@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Device;
 use App\DeviceCategory;
+use App\EnergyUsage;
+use App\ScanDevice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class DeviceController extends Controller
 {
@@ -108,6 +112,92 @@ class DeviceController extends Controller
     {
         $device->is_legacy = true;
         $device->save();
+
+        return redirect()->route('devices.index');
+    }
+
+    public function submit(Request $request){
+        $device = Device::where('mac_address', $request->mac_address)->first();
+
+        if (! is_null($device)){
+            if ($request->api_token == $device->api_token){
+
+                $energy_usage = new EnergyUsage();
+
+                $energy_usage->device_id = $device->id;
+                $energy_usage->start_time = $request->start_time;
+                $energy_usage->end_time = $request->end_time;
+                $energy_usage->kw_usage = $request->kw_usage;
+
+                $energy_usage->save();
+            }else{
+                return Response::json(array(
+                    'error' => true,
+                    'msg' => 'Incorrect API key'
+                ), 401);
+            }
+        }else{
+            return Response::json(array(
+                'error' => true,
+                'msg' => 'Device not found'
+            ), 404);
+        }
+    }
+
+    public function scan(Request $request){
+
+        //  Delete all data 5 minutes old.
+        $allData = ScanDevice::all();
+        $allData->each(function ($device){
+            $created_at = Carbon::parse($device->created_at);
+            if ($created_at < Carbon::now()->subMinute(5) ){
+                $device->delete();
+            }
+        });
+
+
+        $device = Device::where('mac_address', $request->mac_address)->first();
+        if($device){
+            return Response::json(array(
+                'error' => true,
+                'msg' => 'Device already exists'
+            ), 405);
+        }
+
+        //    Attempt to find device in the history.
+        $oldData = ScanDevice::where('mac_address', $request->mac_address)->first();
+
+//    If the device doesn't exist, add a new row for it.
+        if (is_null($oldData)){
+            $scan_device = new ScanDevice();
+            $scan_device->name = $request->name;
+            $scan_device->mac_address = $request->mac_address;
+
+            $scan_device->save();
+        }
+
+    }
+
+    public function viewScan(){
+        $allScans = ScanDevice::all();
+
+        return view('pages.scan', compact('allScans'));
+    }
+
+    public function pair(Request $request){
+        $oldInfo = Device::where('mac_address', $request->mac_address)->first();
+
+        if (is_null($oldInfo)){
+            $device = new Device();
+            $device->name = $request->name;
+            $device->category_id = 1;
+            $device->mac_address = $request->mac_address;
+            $device->api_token = str_random(10);
+            $device->save();
+
+            $scanDevice = ScanDevice::where('mac_address', $request->mac_address)->first();
+            $scanDevice->delete();
+        }
 
         return redirect()->route('devices.index');
     }

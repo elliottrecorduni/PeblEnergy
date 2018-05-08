@@ -11,13 +11,14 @@
 |
 */
 
-
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('/', 'PageController@index')->name('page.index');
-Route::get('/budget', 'PageController@budget')->name('page.budget');
-Route::get('/settings', 'PageController@settings')->name('page.settings');
+Route::get('/', 'PageController@index')->name('pages.index');
+Route::get('/budget', 'PageController@budget')->name('pages.budget');
+Route::get('/settings', 'PageController@settings')->name('pages.settings');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');
+Route::post('/devices/pair', 'DeviceController@pair')->name('devices.pair');
+Route::get('/scan', 'DeviceController@viewScan');

@@ -15,6 +15,10 @@ class Device extends Model
         return $this->belongsTo('App\DeviceCategory', 'category_id');
     }
 
+    public function energy_usages(){
+        return $this->hasMany('App\EnergyUsage');
+    }
+
     public function getMissingInformationAttribute(){
             $attributes = ['name', 'category_id', 'mac_address'];
             foreach ($attributes as $attribute) {

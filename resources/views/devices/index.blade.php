@@ -35,6 +35,7 @@
                                                 @endif</td>
                                             <td>{{$device->mac_address}}</td>
                                             <td>
+                                                <a class="btn btn-success text-light"  href="{{route('devices.show', $device->id)}}">View</a>
                                                 <a class="btn btn-info text-light"  onclick="activateEditDevModal({{$device->id}})">Edit</a>
                                                 <a class="btn btn-danger text-light" data-toggle="modal" data-target="#delete_device_modal">Delete</a>
                                             </td>

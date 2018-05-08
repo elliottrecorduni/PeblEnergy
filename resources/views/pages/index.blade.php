@@ -186,64 +186,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($devices as $device)
                                 <tr>
-                                    <th>Fridge</th>
+                                    <th>{{$device->name}}</th>
                                     <td>4 kW/s</td>
                                 </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-
-
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -255,17 +203,17 @@
 
         </div>
     </div>
+
 @endsection
 
 @section('footer')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
-
     <!--7 Day Overall Electricity Line Graph-->
     <script>
+
+
         var ctx = document.getElementById('elecChart7D').getContext('2d');
-        var chart = new Chart(ctx, {
+        var electricityChart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
 
@@ -276,20 +224,34 @@
                     label: "Overall Weekly Electricity Usage",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
                 }]
             },
 
             // Configuration options go here
             options: {}
         });
+
+        (function update() {
+
+            console.log('update ran');
+
+            fetch('http://127.0.0.1:8000/api/data/category/Electricity/week')
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+                electricityChart.data.datasets[0].data = data;
+                electricityChart.update();
+            });
+            setTimeout(update, 5000);
+        })();
+
     </script>
 
-
-    <!--7 Day Overall Water Line Graph-->
     <script>
+
+
         var ctx = document.getElementById('waterChart7D').getContext('2d');
-        var chart = new Chart(ctx, {
+        var waterChart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
 
@@ -300,12 +262,29 @@
                     label: "Overall Weekly Water Usage",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 50, 40, 150, 40, 180, 120],
                 }]
             },
 
             // Configuration options go here
             options: {}
         });
+
+        (function update() {
+
+            console.log('update ran');
+
+            fetch('http://127.0.0.1:8000/api/data/category/Water/week')
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+                waterChart.data.datasets[0].data = data;
+                waterChart.update();
+            });
+            setTimeout(update, 5000);
+        })();
+
     </script>
+
 @endsection
+
+

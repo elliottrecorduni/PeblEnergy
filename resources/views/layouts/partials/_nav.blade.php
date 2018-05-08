@@ -41,12 +41,10 @@
         </div>
         <div class="hide-navbar">
             <ul class="nav flex-column" id="verticalNavBar">
-                <li class="nav-item "><a class="nav-link" href="{{route('page.index')}}"><i class="fas fa-home text-dark"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('page.budget')}}"><i class="fas fa-money-bill-alt text-dark"></i> Budget</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/devices"><i class="fas fa-mobile-alt text-dark"></i>
-                        Devices</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('page.settings')}}"><i class="fas fa-cog text-dark"></i> Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('pages.index')}}"><i class="fas fa-home text-dark"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('pages.budget')}}"><i class="fas fa-money-bill-alt text-dark"></i>Budget</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('devices.index') }}"><i class="fas fa-mobile-alt text-dark"></i>Devices</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('pages.settings')}}"><i class="fas fa-cog text-dark"></i>Settings</a></li>
             </ul>
 
         </div>
