@@ -53,20 +53,20 @@
                             <form>
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 30px;">
                                     <strong>Enable Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> No</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optnotifications"> Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="optnotifications"> No</label>
                                 </div>
 
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 10px;">
                                     <strong>Usage Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> On</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> Off</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optusage"> On</label>
+                                    <label class="radio-inline"><input type="radio" name="optusage"> Off</label>
                                 </div>
 
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 10px;">
                                     <strong>Budget Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> On</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> Off</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optbudget"> On</label>
+                                    <label class="radio-inline"><input type="radio" name="optbudget"> Off</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
 

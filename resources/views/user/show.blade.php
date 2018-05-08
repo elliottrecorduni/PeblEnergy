@@ -14,6 +14,8 @@
 <body>
 
 @include('layouts.partials._nav')
+@include('layouts.partials._messages')
+
 
 <!-- Vertical Navbar start -->
 <div class="container-fluid h-100">
@@ -91,6 +93,12 @@
                         </div>
                     </div>
                 </div>
+
+                {{--@if(Session::has('success'))--}}
+                    {{--<div class="alert-box success">--}}
+                        {{--<h2>{{ Session::get('success') }}</h2>--}}
+                    {{--</div>--}}
+            {{--@endif--}}
 
                 <!--Modal Edit Username-->
                 <div class="modal fade" id="editUsernameModal" tabindex="-1" role="dialog"
