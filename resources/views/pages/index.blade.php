@@ -275,8 +275,7 @@
                 datasets: [{
                     label: "Overall Weekly Electricity Usage",
                     backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)'
-
+                    borderColor: 'rgb(255, 99, 132)',
                 }]
             },
 
@@ -288,7 +287,7 @@
 
             console.log('update ran');
 
-            fetch('http://127.0.0.1:8000/api/data')
+            fetch('http://127.0.0.1:8000/api/data/Electricity/week')
                 .then(function (data) {
                     return data.json();
                 }).then(function (data) {
