@@ -85,7 +85,7 @@ def sendData():
 
             headers = {'Content-type': 'application/json'}
 
-            r = requests.post('http://' + HOST_NAME, data=json.dumps(to_post), headers=headers)
+            r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
             print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
             data = str(now) + ': posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code)
 
@@ -96,8 +96,6 @@ def sendData():
             if (r.status_code == 401):
                 timer.cancel()
                 print(r.text)
-
-
 
     else:
         print('Network error')
