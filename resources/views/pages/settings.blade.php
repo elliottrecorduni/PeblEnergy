@@ -10,72 +10,7 @@
         <div class="container-fluid">
 
             <div class="row">
-
-                <div class="col-md-4">
-                    <div class="card card-padding">
-                        <div class="card-header bg-dark text-white">
-                            User Settings
-                        </div>
-                        <div class="card-body">
-                            <div class="row" style="padding-top: 15px; padding-left: 15px;">
-                                <div class="col-md-4">
-                                    <i class="fas fa-user-circle fa-6x"></i>
-                                </div>
-                                <div class="col-md-8" style="padding-top: 5px;">
-                                    <span style="padding-right: 5px; padding-left: 15px;"><strong>Username: </strong> BenBob123 </span>
-                                    <br>
-                                    <span style="padding-right: 5px; padding-left: 15px;"><strong>Email: </strong>ben@bobempires.com</span>
-                                    <br>
-                                    <span style="padding-right: 5px; padding-left: 15px;"><strong>Gender: </strong>Apache Helicopter</span>
-                                    <br>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" style="float:right; margin-top: 37px;">Edit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Modal Edit User Details-->
-                <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editUserModalLabel">Edit User Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="usernameForm">Username: </label>
-                                        <input type="text" class="form-control" id="usernameForm" aria-describedby="emailHelp" placeholder="Enter New Username...">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emailForm">Email: </label>
-                                        <input type="text" class="form-control" id="emailForm" aria-describedby="emailHelp" placeholder="Enter New Email...">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="passwordForm">Password: </label>
-                                        <input type="text" class="form-control" id="passwordForm" aria-describedby="emailHelp" placeholder="New Password...">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="confirmPassword">Confirm Password: </label>
-                                        <input type="text" class="form-control" id="confirmPassword" aria-describedby="emailHelp" placeholder="Confirm Password...">
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Confirm</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card card-padding" style="">
                         <div class="card-header bg-dark text-white">
                             Budget Settings
@@ -108,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card card-padding">
                         <div class="card-header bg-dark text-white">
                             Notification Settings
