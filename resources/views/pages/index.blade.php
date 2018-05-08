@@ -86,7 +86,7 @@
                                             <div class="progress border border-dark" style="height: 100%">
                                                 <div class="progress-bar bg-danger" role="progressbar"
                                                      style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                     aria-valuemax="{{$userSetting->gas_budget}}">£50 / {{$userSetting->gas_budget}}
+                                                     aria-valuemax="100">£50 / {{$userSetting->gas_budget}} // {{$waterTotalKw}}
                                                 </div>
                                             </div>
                                         </div>

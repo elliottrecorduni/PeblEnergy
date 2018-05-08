@@ -9,4 +9,10 @@ class DeviceCategory extends Model
     public function devices(){
         return $this->hasMany('App\Device', 'category_id');
     }
+
+    public function getTotalKwAttribute(){
+        return $this->devices->reduce(function ($total, $device){
+            return $total + $device->total_kw;
+        });
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\DeviceCategory;
 use App\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,9 @@ class PageController extends Controller
 
         $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
 
-        return view('pages.index', compact('devices', 'userSetting'));
+        $waterTotalKw = DeviceCategory::where('name', 'Water')->first()->total_kw;
+
+        return view('pages.index', compact('devices', 'userSetting', 'waterTotalKw'));
     }
 
     public function budget() {
