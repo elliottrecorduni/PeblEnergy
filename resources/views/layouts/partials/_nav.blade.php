@@ -45,7 +45,6 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('devices.index') }}"><i class="fas fa-mobile-alt text-dark"></i>Devices</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('pages.settings')}}"><i class="fas fa-cog text-dark"></i>Settings</a></li>
             </ul>
-
         </div>
     </div>
 </nav>

@@ -8,6 +8,7 @@
 <body>
 
 @include('layouts.partials._nav')
+@include('layouts.partials._messages')
 
 <!-- Vertical Navbar start -->
 <div class="container-fluid h-100">
@@ -23,9 +24,6 @@
 
             </div>
         </div>
-
-        @include('layouts.partials._messages')
-
         @yield('content')
     </div>
 </div>
