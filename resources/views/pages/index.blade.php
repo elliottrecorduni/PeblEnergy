@@ -186,64 +186,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($devices as $device)
                                 <tr>
-                                    <th>Fridge</th>
+                                    <th>{{$device->name}}</th>
                                     <td>4 kW/s</td>
                                 </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-                                <tr>
-                                    <th>Kettle</th>
-                                    <td>3 kW/s</td>
-                                </tr>
-
-
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

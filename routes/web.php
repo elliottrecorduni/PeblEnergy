@@ -11,14 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-
-    return view('pages.index');
-})->name('pages.index');;
-
 Auth::routes();
 
-//Route::get('/', 'PageController@index')->name('pages.index');
+Route::get('/', 'PageController@index')->name('pages.index');
 Route::get('/budget', 'PageController@budget')->name('pages.budget');
 Route::get('/settings', 'PageController@settings')->name('pages.settings');
 

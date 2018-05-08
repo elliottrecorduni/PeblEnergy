@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index(){
-        return view('pages.index');
+
+        $devices = Device::all();
+
+        return view('pages.index', compact('devices'));
     }
 
     public function budget() {
