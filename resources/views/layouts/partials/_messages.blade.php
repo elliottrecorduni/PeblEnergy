@@ -11,7 +11,7 @@
     {{--</div>--}}
 {{--@endif--}}
 
-<div class="flash-message" id="message-banner">
+<div class="col-12 flash-message" id="message-banner">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
 @if(Session::has('alert-' . $msg))
     <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
