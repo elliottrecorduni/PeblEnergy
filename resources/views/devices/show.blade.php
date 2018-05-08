@@ -3,22 +3,18 @@
 
 @section('content')
 
-{{--<h1>Name: </h1>--}}
-{{--<h1>MAC Address: {{$device->mac_address}}</h1>--}}
-{{--<h1>Category ID: {{$device->category_id}}</h1>--}}
-
         <div class="col-md-10">
         <div class="card card-padding">
             <div class="card-header bg-dark text-white">
                 {{$device->name}} Usage - Category: {{$device->category->name}}
             </div>
             <div class="card-body text-center">
-                <row>
-                    <button class="btn btn-secondary button-spacing">Custom</button>
-                    <button class="btn btn-secondary button-spacing">1 Day</button>
-                    <button class="btn btn-warning button-spacing">7 Days</button>
-                    <button class="btn btn-secondary button-spacing">30 Days</button>
-                    <button class="btn btn-secondary button-spacing">1 Year</button>
+                <row id="graph">
+                    {{--<button class="btn btn-secondary button-spacing">Custom</button>--}}
+                    <a class="btn text-light btn-secondary button-spacing" onclick="show1Day()" id="btn-1-day">1 Day</a>
+                    <a class="btn text-light btn-secondary btn-warning button-spacing" onclick="showWeek()" id="btn-week">Week</a>
+                    <a class="btn text-light btn-secondary button-spacing" onclick="showMonth()" id="btn-month">Month</a>
+                    {{--<button class="btn btn-secondary button-spacing">1 Year</button>--}}
                     <button class="btn btn-secondary button-spacing float-right"><i
                                 class="fas fa-download"></i></button>
                 </row>
@@ -36,7 +32,7 @@
 @endsection
 
 @section('footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
     <script>
 
@@ -60,19 +56,92 @@
             options: {}
         });
 
+        var time_frame = 'week';
+
         (function update() {
 
-            console.log('update ran');
-
-            fetch('http://127.0.0.1:8000/api/data/device/{{$device->mac_address}}/week')
+            fetch('http://127.0.0.1:8000/api/data/device/{{$device->mac_address}}/' + time_frame)
                 .then(function (data) {
                     return data.json();
                 }).then(function (data) {
-                deviceChart.data.datasets[0].data = data;
+
+                if(data.length === 1){
+                    deviceChart.data.datasets[0].data = [0, data[0], 0];
+                }else{
+                    deviceChart.data.datasets[0].data = data;
+                }
+
                 deviceChart.update();
             });
             setTimeout(update, 5000);
         })();
+
+        function show1Day(){
+            $('#graph').children('a').each(function (index, item) {
+                $(item).removeClass('btn-warning');
+            });
+            $('#btn-1-day').addClass('btn-warning');
+
+            time_frame = 'day';
+            fetch('http://127.0.0.1:8000/api/data/device/{{$device->mac_address}}/' + time_frame)
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+
+                deviceChart.data.labels = ['', 'Today', ''];
+                deviceChart.data.datasets[0].data = [0, data[0], 0];
+
+                deviceChart.update();
+
+            });
+        }
+
+        function showWeek(){
+            $('#graph').children('a').each(function (index, item) {
+                $(item).removeClass('btn-warning');
+            });
+            $('#btn-week').addClass('btn-warning');
+
+            time_frame = 'week';
+
+            fetch('http://127.0.0.1:8000/api/data/device/{{$device->mac_address}}/' + time_frame)
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+
+                deviceChart.data.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                deviceChart.data.datasets[0].data = data;
+
+                deviceChart.update();
+
+            });
+        }
+
+        function showMonth(){
+
+            $('#graph').children('a').each(function (index, item) {
+                $(item).removeClass('btn-warning');
+            });
+            $('#btn-month').addClass('btn-warning');
+
+            time_frame = 'month';
+
+            fetch('http://127.0.0.1:8000/api/data/device/{{$device->mac_address}}/' + time_frame)
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+                    days = [];
+                    for (i = 0; i < data.length; i++) {
+                        days.push(i + 1)
+                    }
+                    deviceChart.data.labels = days;
+                    deviceChart.data.datasets[0].data = data;
+
+                    deviceChart.update();
+
+            });
+
+        }
 
     </script>
 @endsection
