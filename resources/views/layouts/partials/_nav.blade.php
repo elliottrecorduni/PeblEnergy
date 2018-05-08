@@ -28,7 +28,7 @@
                         <i class="fas fa-user"></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/user/show"><i class="fas fa-cog"></i> User Settings</a>
+                        <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}"><i class="fa fa-male" aria-hidden="true"></i> Edit Profile</a>
                         <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </li>
