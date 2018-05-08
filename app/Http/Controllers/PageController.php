@@ -18,7 +18,9 @@ class PageController extends Controller
 
         $devices = Device::all();
 
-        return view('pages.index', compact('devices'));
+        $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
+
+        return view('pages.index', compact('devices', 'userSetting'));
     }
 
     public function budget() {
