@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index')->name('page.index');
+Route::get('/budget', 'PageController@budget')->name('page.budget');
+Route::get('/settings', 'PageController@settings')->name('page.settings');
 
-Route::resource('/devices', 'DeviceController');
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/user', 'UserController');
+Route::resource('/devices', 'DeviceController');

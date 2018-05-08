@@ -14,8 +14,8 @@ class CreateEnergyUsagesTable extends Migration
     public function up()
     {
         Schema::create('energy_usages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('device_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->bigInteger('device_id')->unsigned();
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->double('kw_usage', 8, 4);

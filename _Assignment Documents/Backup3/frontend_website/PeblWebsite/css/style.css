@@ -1,0 +1,33 @@
+.border-dark {
+    border-width: 10px;
+}
+.button-spacing {
+    margin: 5px;
+}
+
+@media (min-width: 991px) {
+    .hide-navbar{
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .sidebar {display: none;}
+}
+
+@media (max-width: 991px) {
+    .mobilePadding {    margin-top: 30px;  }
+}
+
+.card-padding {
+    margin-bottom:2rem;
+}
+
+.modal-lg{
+    max-width: 1000px;
+
+}
+
+#ex1Slider .slider-selection {
+    background: #BABABA;
+}

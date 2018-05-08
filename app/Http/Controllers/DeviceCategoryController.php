@@ -14,8 +14,8 @@ class DeviceCategoryController extends Controller
      */
     public function index()
     {
-        return view('device_categories.index');
-
+        $categories = DeviceCategory::all();
+        return view('device_categories.index', compact('categories'));
     }
 
     /**
@@ -36,7 +36,13 @@ class DeviceCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new DeviceCategory();
+
+        $category->name = $request->name;
+
+        $category->save();
+
+        return redirect()->route('device-categories.index');
     }
 
     /**
@@ -58,7 +64,7 @@ class DeviceCategoryController extends Controller
      */
     public function edit(DeviceCategory $deviceCategory)
     {
-        //
+        return view('device_categories.edit', compact('deviceCategory'));
     }
 
     /**
@@ -70,7 +76,10 @@ class DeviceCategoryController extends Controller
      */
     public function update(Request $request, DeviceCategory $deviceCategory)
     {
-        //
+        $deviceCategory->name = $request->name;
+        $deviceCategory->save();
+
+        return redirect()->route('device-categories.index');
     }
 
     /**
@@ -81,6 +90,14 @@ class DeviceCategoryController extends Controller
      */
     public function destroy(DeviceCategory $deviceCategory)
     {
-        //
+        //Unlink each device from this Category so there's no foreign key constraint issue on delete.
+        $deviceCategory->devices()->each(function($device){
+            $device->category()->dissociate();
+            $device->save();
+        });
+
+        $deviceCategory->delete();
+
+        return redirect()->route('device-categories.index');
     }
 }
