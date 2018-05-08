@@ -12,6 +12,7 @@
 */
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'PageController@index')->name('pages.index');
 Route::get('/budget', 'PageController@budget')->name('pages.budget');

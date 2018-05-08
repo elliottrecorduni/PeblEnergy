@@ -160,8 +160,9 @@ class DeviceController extends Controller
         if($device){
             return Response::json(array(
                 'error' => true,
-                'msg' => 'Device already exists'
-            ), 405);
+                'msg' => 'Device already exists',
+                'api_token' => $device->api_token
+            ), 201);
         }
 
         //    Attempt to find device in the history.

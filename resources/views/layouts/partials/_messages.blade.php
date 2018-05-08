@@ -1,6 +1,6 @@
 @if ($errors->any())
-    <div class="ui error message">
-        <div class="header">
+    <div class="text-danger">
+        <div>
             There were some errors with your submission
         </div>
         <ul>
