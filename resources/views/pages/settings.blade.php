@@ -17,21 +17,22 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <form>
+                                <form method="POST" action="{{route('settings.update')}}">
+                                    {{csrf_field()}}
                                     <div class="form-group">
                                         <p>Electricity Budget:</p>
                                         <input  id="elec" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->electricity_budget) ? $userSetting->electricity_budget : 100 }}" name="elec_budget"/>
                                         <span style="padding-left: 10px">£<label for="elec" id="elecValue"></label></span>
 
                                         <p>Water Budget:</p>
                                         <input  id="water" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->water_budget) ? $userSetting->water_budget : 100 }}" name="water_budget"/>
                                         <span style="padding-left: 10px">£<label for="water" id="waterValue"></label></span>
 
                                         <p>Gas Budget:</p>
                                         <input  id="gas" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->gas_budget) ? $userSetting->gas_budget : 100 }}" name="gas_budget"/>
                                         <span style="padding-left: 10px">£<label for="gas" id="gasValue"></label></span>
                                         <br>
                                         <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
