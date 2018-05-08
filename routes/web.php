@@ -18,6 +18,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/', 'PageController@index')->name('page.index');
 Route::get('/budget', 'PageController@budget')->name('page.budget');
 Route::get('/settings', 'PageController@settings')->name('page.settings');
+Route::post('/settings/update', 'UserSettingController@update')->name('settings.update');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');
