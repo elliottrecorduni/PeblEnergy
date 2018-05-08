@@ -19,3 +19,4 @@ Route::get('/settings', 'PageController@settings')->name('pages.settings');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');
+Route::resource('/devices/scan', 'DeviceController@scan');

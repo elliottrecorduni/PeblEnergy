@@ -16,6 +16,7 @@ data = None
 
 HOST_NAME = 'google.com'  # link to page where data should be posted
 interval = 5.0  # time between sending data to server in seconds
+api_token = 'test'
 
 # getting device MAC address
 mac = get_mac()
@@ -77,12 +78,12 @@ def sendData():
         if server_up:
             
             to_post = {'mac_address': s, 'kw_usage': round(random.uniform(0, 1), 2), 'Status': 'Alive', 'start_time': str(now)
-                , 'end_time': str(now + timedelta(seconds=interval))}
+                , 'end_time': str(now + timedelta(seconds=interval)), 'api_token': api_token}
 
             headers = {'Content-type': 'application/json'}
             
             r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
-            print('posted data to server: ' + str(json.dumps(to_post)))
+            print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
     else:
         print('Network error')
 

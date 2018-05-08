@@ -24,14 +24,23 @@ Route::post('/submit', function (Request $request) {
 
     $device = Device::where('mac_address', $request->mac_address)->first();
 
-    $energy_usage = new EnergyUsage();
+    if ($request->api_token == $device->api_token){
 
-    $energy_usage->device_id = $device->id;
-    $energy_usage->start_time = $request->start_time;
-    $energy_usage->end_time = $request->end_time;
-    $energy_usage->kw_usage = $request->kw_usage;
+        $energy_usage = new EnergyUsage();
 
-    $energy_usage->save();
+        $energy_usage->device_id = $device->id;
+        $energy_usage->start_time = $request->start_time;
+        $energy_usage->end_time = $request->end_time;
+        $energy_usage->kw_usage = $request->kw_usage;
+
+        $energy_usage->save();
+    }else{
+//        return http_response_code(401);
+        return Response::json(array(
+            'error' => true,
+            'msg' => 'Wrong API Token'
+        ), 401);
+    }
 
 });
 
