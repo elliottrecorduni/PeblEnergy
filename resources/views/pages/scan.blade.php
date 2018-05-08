@@ -7,6 +7,8 @@
             <div class="card-header bg-dark text-white">
                 Available Devices to Pair
             </div>
+
+            @if($allScans->count() > 0)
             <div class="card-body text-center">
                 <table class="table">
                     <th>Name</th>
@@ -30,6 +32,11 @@
 
                 </table>
             </div>
+            @else
+                <div class="container">
+                    <p>There are currently no devices to pair</p>
+                </div>
+            @endif
         </div>
     </div>
 
