@@ -35,5 +35,6 @@ Route::post('/submit', function (Request $request) {
 
 });
 
-Route::get('/data/{category_name}/{time_frame}', 'DataController@category');
+Route::get('/data/category/{category_name}/{time_frame}', 'DataController@category');
+Route::get('/data/device/{device_mac}/{time_frame}', 'DataController@device');
 
