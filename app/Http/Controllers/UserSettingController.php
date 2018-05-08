@@ -94,7 +94,7 @@ class UserSettingController extends Controller
             }
         }
 
-        return redirect()->route('page.settings');
+        return redirect()->route('pages.settings');
 
     }
 
