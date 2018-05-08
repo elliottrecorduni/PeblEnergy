@@ -112,13 +112,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            @include('components.graph', ['name' => 'Electricity'])
+                            @include('components.graph', ['name' => 'Electricity', 'type' => 'category'])
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                        @include('components.graph', ['name' => 'Water'])
+                        @include('components.graph', ['name' => 'Water', 'type' => 'category'])
                         </div>
                     </div>
                     <!--End Row-->
@@ -162,6 +162,6 @@
 @endsection
 
 @section('footer')
-    @include('components.graph-scripts')
+    @include('components.graph-scripts', ['type' => 'category'])
 @endsection
 

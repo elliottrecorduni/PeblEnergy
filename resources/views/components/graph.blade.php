@@ -23,7 +23,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
-
 <script>
     var ctx = document.getElementById('{{$name}}-chart').getContext('2d');
     var {{$name}}Chart = new Chart(ctx, {
@@ -48,7 +47,7 @@
 
     (function update() {
 
-        fetch('http://127.0.0.1:8000/api/data/category/{{$name}}/' + {{$name}}_time_frame)
+        fetch('http://127.0.0.1:8000/api/data/{{$type}}/{{$name}}/' + {{$name}}_time_frame)
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
