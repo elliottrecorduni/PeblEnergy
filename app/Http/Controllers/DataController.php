@@ -75,7 +75,7 @@ class DataController extends Controller
 
     public function device($device_mac, $time_frame)
     {
-        $device = \App\Device::where('mac_address', $device_mac)->first();
+        $device = \App\Device::where('id', $device_mac)->first();
 
         global $start_date;
         global $end_date;
