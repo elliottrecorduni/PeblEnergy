@@ -265,7 +265,7 @@
 
 
         var ctx = document.getElementById('elecChart7D').getContext('2d');
-        var chart = new Chart(ctx, {
+        var electricityChart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
 
@@ -287,12 +287,50 @@
 
             console.log('update ran');
 
-            fetch('http://127.0.0.1:8000/api/data/Electricity/week')
+            fetch('http://127.0.0.1:8000/api/data/category/Electricity/week')
                 .then(function (data) {
                     return data.json();
                 }).then(function (data) {
-                chart.data.datasets[0].data = data;
-                chart.update();
+                electricityChart.data.datasets[0].data = data;
+                electricityChart.update();
+            });
+            setTimeout(update, 5000);
+        })();
+
+    </script>
+
+    <script>
+
+
+        var ctx = document.getElementById('waterChart7D').getContext('2d');
+        var waterChart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                datasets: [{
+                    label: "Overall Weekly Water Usage",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+
+        (function update() {
+
+            console.log('update ran');
+
+            fetch('http://127.0.0.1:8000/api/data/category/Water/week')
+                .then(function (data) {
+                    return data.json();
+                }).then(function (data) {
+                waterChart.data.datasets[0].data = data;
+                waterChart.update();
             });
             setTimeout(update, 5000);
         })();
