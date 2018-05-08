@@ -16,7 +16,6 @@
 @include('layouts.partials._nav')
 @include('layouts.partials._messages')
 
-
 <!-- Vertical Navbar start -->
 <div class="container-fluid h-100">
     <div class="row h-100">
