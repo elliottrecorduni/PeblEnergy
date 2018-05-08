@@ -16,6 +16,7 @@ data = None
 
 HOST_NAME = 'google.com'  # link to page where data should be posted
 interval = 5.0  # time between sending data to server in seconds
+
 api_token = 'xduewIopuP'
 
 # getting device MAC address
@@ -83,7 +84,7 @@ def sendData():
 
             headers = {'Content-type': 'application/json'}
             
-            r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
+            r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
             
             if(r.status_code == 404):
@@ -101,6 +102,8 @@ def sendData():
 
 # switch to scan mode.
 def scanMode():
+    global api_token
+    
     if device_up:
         scanTimer = threading.Timer( 5, scanMode)
         scanTimer.start()
@@ -111,11 +114,14 @@ def scanMode():
 
             headers = {'Content-type': 'application/json'}
             
-            r = requests.post('http://127.0.0.1:8000/api/scan', data=json.dumps(to_post), headers=headers)
+            r = requests.post('http://127.0.0.1:8000/api/scan', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
 
-            if(r.status_code == 405):
+            if(r.status_code == 201):
                 scanTimer.cancel()
+                js = r.json()
+                print(js['api_token'])
+                api_token = js['api_token']
                 sendData()
 
 
