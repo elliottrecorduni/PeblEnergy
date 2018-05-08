@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <div class="row" style="padding-top: 15px; padding-left: 15px;">
                                 <div class="col-md-4">
-                                    <i class="fas fa-user-circle fa-8x"></i>
+                                    <i class="fas fa-user-circle fa-6x"></i>
                                 </div>
                                 <div class="col-md-8" style="padding-top: 5px;">
                                     <span style="padding-right: 5px; padding-left: 15px;"><strong>Username: </strong> BenBob123 </span>
@@ -149,6 +149,7 @@
 @section('footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.min.css">
 
     <script>
 
