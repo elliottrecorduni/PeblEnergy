@@ -19,4 +19,5 @@ Route::get('/settings', 'PageController@settings')->name('pages.settings');
 
 Route::resource('/device-categories', 'DeviceCategoryController');
 Route::resource('/devices', 'DeviceController');
-Route::resource('/devices/scan', 'DeviceController@scan');
+Route::post('/devices/pair', 'DeviceController@pair')->name('devices.pair');
+Route::get('/scan', 'DeviceController@viewScan');
