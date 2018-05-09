@@ -20,7 +20,7 @@ class PageController extends Controller
         $devices = Device::all();
 
         if(Auth::check()){
-            $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
+            $userSetting = UserSetting::first();
         }
 
         $waterTotalKw = DeviceCategory::where('name', 'Water')->first()->total_kw;
