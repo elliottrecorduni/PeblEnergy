@@ -42,4 +42,8 @@ class DeviceCategory extends Model
         return ( number_format(($total_price), 2, '.', ''));
     }
 
+    public function getUsageRate10SecondsAttribute(){
+        return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(10))->sum('kw_usage');
+    }
+
 }

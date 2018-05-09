@@ -23,4 +23,12 @@ class ComponentController extends Controller
         return view('components.monthly-budget', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice', 'totalMonthPrice'));
 
     }
+
+    public function realTimeDatausage(){
+        $electricityUsageRate = DeviceCategory::where('name', 'Electricity')->first()->usage_rate_10_seconds;
+        $waterUsageRate = DeviceCategory::where('name', 'Water')->first()->usage_rate_10_seconds;
+        $gasUsageRate = DeviceCategory::where('name', 'Gas')->first()->usage_rate_10_seconds;
+
+        return view('components.real-time-data-usage', compact('electricityUsageRate', 'waterUsageRate', 'gasUsageRate'));
+    }
 }

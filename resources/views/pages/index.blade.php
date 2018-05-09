@@ -17,20 +17,20 @@
                                 <div class="card-header bg-dark text-white">
                                     Real Time Data Usage
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" id="real-time-data-usage-card">
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-bolt"></i> Electricity</td>
-                                            <td class="text-danger">12 m^3/s</td>
+                                            <td class="text-danger">{{$electricityUsageRate}}kW 10/s</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-tint"></i> Water</td>
-                                            <td class="text-primary">12 m^3/s</td>
+                                            <td class="text-primary">{{$waterUsageRate}}kW 10/s</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-fire"></i> Gas</td>
-                                            <td class="text-warning">12 m^3/s</td>
+                                            <td class="text-warning">{{$gasUsageRate}}kW 10/s</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -177,7 +177,7 @@
 @section('footer')
 
     <script>
-        (function update() {
+        (function updateMonthlyBudget() {
             fetch('http://127.0.0.1:8000/components/monthly-budget')
                 .then(function (data) {
                     return data.text();
@@ -186,7 +186,19 @@
                 var mb = document.getElementById('monthly-budget-card');
                 mb.innerHTML = data;
             });
-            setTimeout(update, 5000);
+            setTimeout(updateMonthlyBudget, 5000);
+        })();
+
+        (function updateRealTimeUsage() {
+            fetch('http://127.0.0.1:8000/components/real-time-data-usage')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('real-time-data-usage-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateRealTimeUsage, 5000);
         })();
     </script>
 
