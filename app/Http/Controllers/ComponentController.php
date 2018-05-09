@@ -6,6 +6,7 @@ use App\Device;
 use App\DeviceCategory;
 use App\ScanDevice;
 use App\UserSetting;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ class ComponentController extends Controller
 
     }
 
-    public function realTimeDatausage(){
+    public function realTimeDataUsage(){
         $electricityUsageRate = DeviceCategory::where('name', 'Electricity')->first()->usage_rate_10_seconds;
         $waterUsageRate = DeviceCategory::where('name', 'Water')->first()->usage_rate_10_seconds;
         $gasUsageRate = DeviceCategory::where('name', 'Gas')->first()->usage_rate_10_seconds;
@@ -40,7 +41,14 @@ class ComponentController extends Controller
     }
 
     public function scan(){
-        $allScans = ScanDevice::all();
-        return view('components.scan', compact('allScans'));
+        $allScanDevices = ScanDevice::all();
+
+        $allScanDevices->each(function ($device){
+            if ($device->created_at < Carbon::now()->subSeconds(5)){
+                $device->delete();
+            }
+        });
+
+        return view('components.scan', compact('allScanDevices'));
     }
 }
