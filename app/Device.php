@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     protected $casts = [
-        'is_legacy' => 'boolean'
+        'is_legacy' => 'boolean',
+        'kw_usage' => 'double'
     ];
 
 
@@ -27,5 +28,9 @@ class Device extends Model
                 }
             }
             return false;
+    }
+
+    public function getTotalKwAttribute(){
+        return $this->energy_usages()->sum('kw_usage');
     }
 }

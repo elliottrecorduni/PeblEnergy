@@ -47,123 +47,90 @@
                                     Monthly Budget
                                 </div>
                                 <div class="card-body">
-                                    <!--Electricity Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Electricity
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                     style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                     aria-valuemax="100">£32 / 70
+                                    @if (! \Illuminate\Support\Facades\Auth::check())
+                                        Please login to view your budget
+                                    @else
+                                        @if(is_null($userSetting))
+                                            Please <a href="{{route('pages.settings')}}">save your settings</a> in order
+                                            to view them
+                                        @else
+
+                                        <!--Electricity Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Electricity
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                             aria-valuemax="{{$userSetting->electricity_budget}}">£32
+                                                            / {{$userSetting->electricity_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!--Water Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Water
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                                                     aria-valuemax="100">£25 / 50
+                                            <br>
+                                            <!--Water Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Water
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 45%" aria-valuenow="45" aria-valuemin="0"
+                                                             aria-valuemax="{{$userSetting->water_budget}}">£25
+                                                            / {{$userSetting->water_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!--Gas Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Gas
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                     style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                     aria-valuemax="100">£50 / 60
+                                            <br>
+                                            <!--Gas Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Gas
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                             style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                                             aria-valuemax="100">£50 / {{$userSetting->gas_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!--Total Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Total
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                     style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                     aria-valuemax="100">£108 / 180
+                                            <br>
+                                            <!--Total Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Total
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                             aria-valuemax="100">£108 / {{$userSetting->total_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            @endif
+                                        @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-padding mobilePadding">
-                                <div class="card-header bg-dark text-white">
-                                    Electricity Usage (kW)
-                                </div>
-                                <div class="card-body text-center">
-                                    <!--<row class="btn-toolbar" >-->
-
-                                    <button class="btn btn-secondary button-spacing">Custom</button>
-                                    <button class="btn btn-secondary button-spacing">1 Day</button>
-                                    <button class="btn btn-warning button-spacing">7 Days</button>
-                                    <button class="btn btn-secondary button-spacing">30 Days</button>
-                                    <button class="btn btn-secondary button-spacing">1 Year</button>
-                                    <button class="btn btn-secondary button-spacing float-right"><i
-                                                class="fas fa-download"></i></button>
-                                    <!--</row>-->
-                                    <br>
-                                    <row>
-                                        <div class="">
-                                            <canvas id="elecChart7D"></canvas>
-                                        </div>
-                                        <!--<img src="img/test-graph.png" style="width: 100%; height:100%" alt="">-->
-                                    </row>
-                                </div>
-                            </div>
+                            @include('components.graph', ['name' => 'Electricity', 'type' => 'category'])
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-padding">
-                                <div class="card-header bg-dark text-white">
-                                    Water Usage (m^3/s)
-                                </div>
-                                <div class="card-body text-center">
-                                    <row>
-                                        <button class="btn btn-secondary button-spacing">Custom</button>
-                                        <button class="btn btn-secondary button-spacing">1 Day</button>
-                                        <button class="btn btn-warning button-spacing">7 Days</button>
-                                        <button class="btn btn-secondary button-spacing">30 Days</button>
-                                        <button class="btn btn-secondary button-spacing">1 Year</button>
-                                        <button class="btn btn-secondary button-spacing float-right"><i
-                                                    class="fas fa-download"></i></button>
-                                    </row>
-                                    <br>
-                                    <row>
-                                        <div class="">
-                                            <canvas id="waterChart7D"></canvas>
-                                        </div>
-                                        <!--<img src="img/test-graph.png" style="width: 100%; height:100%" alt="">-->
-                                    </row>
-                                </div>
-                            </div>
+                            @include('components.graph', ['name' => 'Water', 'type' => 'category'])
                         </div>
                     </div>
                     <!--End Row-->
@@ -187,10 +154,10 @@
                                 </thead>
                                 <tbody>
                                 @foreach($devices as $device)
-                                <tr>
-                                    <th>{{$device->name}}</th>
-                                    <td>4 kW/s</td>
-                                </tr>
+                                    <tr>
+                                        <th>{{$device->name}}</th>
+                                        <td>4 kW/s</td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -207,84 +174,6 @@
 @endsection
 
 @section('footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <!--7 Day Overall Electricity Line Graph-->
-    <script>
-
-
-        var ctx = document.getElementById('elecChart7D').getContext('2d');
-        var electricityChart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                datasets: [{
-                    label: "Overall Weekly Electricity Usage",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
-
-        (function update() {
-
-            console.log('update ran');
-
-            fetch('http://127.0.0.1:8000/api/data/category/Electricity/week')
-                .then(function (data) {
-                    return data.json();
-                }).then(function (data) {
-                electricityChart.data.datasets[0].data = data;
-                electricityChart.update();
-            });
-            setTimeout(update, 5000);
-        })();
-
-    </script>
-
-    <script>
-
-
-        var ctx = document.getElementById('waterChart7D').getContext('2d');
-        var waterChart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                datasets: [{
-                    label: "Overall Weekly Water Usage",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
-
-        (function update() {
-
-            console.log('update ran');
-
-            fetch('http://127.0.0.1:8000/api/data/category/Water/week')
-                .then(function (data) {
-                    return data.json();
-                }).then(function (data) {
-                waterChart.data.datasets[0].data = data;
-                waterChart.update();
-            });
-            setTimeout(update, 5000);
-        })();
-
-    </script>
-
+    @include('components.graph-scripts', ['type' => 'category'])
 @endsection
-
 

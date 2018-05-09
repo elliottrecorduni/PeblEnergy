@@ -17,22 +17,31 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <form>
+                                <form method="POST" action="{{route('settings.update')}}">
+                                    {{csrf_field()}}
                                     <div class="form-group">
                                         <p>Electricity Budget:</p>
                                         <input  id="elec" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->electricity_budget) ? $userSetting->electricity_budget : 100 }}" name="elec_budget"/>
                                         <span style="padding-left: 10px">£<label for="elec" id="elecValue"></label></span>
 
                                         <p>Water Budget:</p>
                                         <input  id="water" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->water_budget) ? $userSetting->water_budget : 100 }}" name="water_budget"/>
                                         <span style="padding-left: 10px">£<label for="water" id="waterValue"></label></span>
 
                                         <p>Gas Budget:</p>
                                         <input  id="gas" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-                                                data-slider-max="750" data-slider-step="10" data-slider-value="100"/>
+                                                data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->gas_budget) ? $userSetting->gas_budget : 100 }}" name="gas_budget"/>
                                         <span style="padding-left: 10px">£<label for="gas" id="gasValue"></label></span>
+
+                                        <div class="form-group">
+
+                                            <label for="kwh_price">Price per kWh (pence)</label>
+                                            <input type="text" class="form-control" id="kwh_price" name="kwh_price" placeholder="Price per kWh (pence)"
+                                                   value="{{isset($userSetting->kwh_price) ? $userSetting->kwh_price : 0 }}">
+                                        </div>
+
                                         <br>
                                         <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
                                     </div>
@@ -53,20 +62,20 @@
                             <form>
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 30px;">
                                     <strong>Enable Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> No</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optnotifications"> Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="optnotifications"> No</label>
                                 </div>
 
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 10px;">
                                     <strong>Usage Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> On</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> Off</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optusage"> On</label>
+                                    <label class="radio-inline"><input type="radio" name="optusage"> Off</label>
                                 </div>
 
                                 <div class="form-group" style="padding-left: 20px; padding-right: 10px; padding-top: 10px;">
                                     <strong>Budget Notifications:</strong>
-                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optradio"> On</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio"> Off</label>
+                                    <label class="radio-inline" style="padding-right: 10px; padding-left: 10px;"><input type="radio" name="optbudget"> On</label>
+                                    <label class="radio-inline"><input type="radio" name="optbudget"> Off</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
 
