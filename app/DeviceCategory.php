@@ -28,7 +28,7 @@ class DeviceCategory extends Model
     public function getTotalPriceCurrentMonthAttribute(){
         $user_setting = UserSetting::first();
 
-        return ( number_format((($this->getTotalKwCurrentMonthAttribute() * $user_setting->kwh_price) / 100), 2)) ;
+        return ( number_format((($this->getTotalKwCurrentMonthAttribute() * $user_setting->kwh_price) / 100), 2, '.', '')) ;
     }
 
     public static function getTotalPriceCurrentMonthGroupAttribute(array $categories){
