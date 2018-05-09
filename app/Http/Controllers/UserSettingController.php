@@ -85,6 +85,7 @@ class UserSettingController extends Controller
                 $userSetting->gas_budget = $request->gas_budget;
                 $userSetting->water_budget = $request->water_budget;
                 $userSetting->electricity_budget = $request->elec_budget;
+                $userSetting->kwh_price = $request->kwh_price;
 
                 $userSetting->save();
             } else {
@@ -95,6 +96,7 @@ class UserSettingController extends Controller
                 $userSetting->gas_budget = $request->gas_budget;
                 $userSetting->water_budget = $request->water_budget;
                 $userSetting->electricity_budget = $request->elec_budget;
+                $userSetting->kwh_price = $request->kwh_price;
 
                 $userSetting->save();
             }

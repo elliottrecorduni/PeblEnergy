@@ -34,6 +34,14 @@
                                         <input  id="gas" data-slider-id='ex1Slider' type="text" data-slider-min="0"
                                                 data-slider-max="750" data-slider-step="10" data-slider-value="{{isset($userSetting->gas_budget) ? $userSetting->gas_budget : 100 }}" name="gas_budget"/>
                                         <span style="padding-left: 10px">£<label for="gas" id="gasValue"></label></span>
+
+                                        <div class="form-group">
+
+                                            <label for="kwh_price">Price per kWh</label>
+                                            <input type="text" class="form-control" id="kwh_price" name="kwh_price" placeholder="Price per kWh"
+                                                   value="{{isset($userSetting->kwh_price) ? $userSetting->kwh_price : 0 }}">
+                                        </div>
+
                                         <br>
                                         <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
                                     </div>
