@@ -11,6 +11,7 @@
             <a class="btn text-light btn-secondary button-spacing" onclick="show1Day('{{$name}}')" id="btn-1-day">1 Day</a>
             <a class="btn text-light btn-secondary btn-warning button-spacing" onclick="showWeek('{{$name}}')" id="btn-week">Week</a>
             <a class="btn text-light btn-secondary button-spacing" onclick="showMonth('{{$name}}')" id="btn-month">Month</a>
+            <a class="btn text-light btn-secondary button-spacing" onclick="showYear('{{$name}}')" id="btn-year">Year</a>
             {{--<button class="btn btn-secondary button-spacing">1 Year</button>--}}
             <a class="btn text-light btn-secondary button-spacing float-right" href="{{route('data.export', [$type, $name])}}"><i
                         class="fas fa-download"></i></a>

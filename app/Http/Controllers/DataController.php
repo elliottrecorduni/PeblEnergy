@@ -31,18 +31,31 @@ class DataController extends Controller
                 $start_date = Carbon::now()->startOfMonth();
                 $end_date = Carbon::now()->endOfMonth();
                 break;
+
+            case 'year':
+                $start_date = Carbon::now()->startOfYear();
+                $end_date = Carbon::now()->endOfYear();
+                break;
         }
 
-        //Init interval
-        $dateInterval = \DateInterval::createFromDateString('1 day');
-        //Init Date Period from start date to end date
-        //1 day is added to end date since date period ends before end date. See first comment: http://php.net/manual/en/class.dateperiod.php
-        $dateperiod = new \DatePeriod($start_date, $dateInterval, $end_date);
 
         $data = [];
 
-        foreach ($dateperiod as $day) {
-            array_push($data, 0);
+        if ($time_frame != 'year'){
+
+            //Init interval
+            $dateInterval = \DateInterval::createFromDateString('1 day');
+            //Init Date Period from start date to end date
+            //1 day is added to end date since date period ends before end date. See first comment: http://php.net/manual/en/class.dateperiod.php
+            $dateperiod = new \DatePeriod($start_date, $dateInterval, $end_date);
+
+            foreach ($dateperiod as $day) {
+                array_push($data, 0);
+            }
+        }else{
+            for ($i = 0; $i < 12; $i++){
+                array_push($data, 0);
+            }
         }
 
         $devices = $category->devices()->get();
@@ -67,6 +80,9 @@ class DataController extends Controller
                     $data[(int)$carbon->format('j') - 1] += $usage->kw_usage;
                 }
 
+                if ($time_frame == 'year'){
+                    $data[(int)$carbon->format('n') - 1] += $usage->kw_usage;
+                }
 
             }
         }
@@ -97,19 +113,34 @@ class DataController extends Controller
                 $start_date = Carbon::now()->startOfMonth();
                 $end_date = Carbon::now()->endOfMonth();
                 break;
-        }
 
-        //Init interval
-        $dateInterval = \DateInterval::createFromDateString('1 day');
-        //Init Date Period from start date to end date
-        //1 day is added to end date since date period ends before end date. See first comment: http://php.net/manual/en/class.dateperiod.php
-        $dateperiod = new \DatePeriod($start_date, $dateInterval, $end_date);
+            case 'year':
+                $start_date = Carbon::now()->startOfYear();
+                $end_date = Carbon::now()->endOfYear();
+                break;
+
+        }
 
         $data = [];
 
-        foreach ($dateperiod as $day) {
-            array_push($data, 0);
+        if ($time_frame != 'year'){
+
+            //Init interval
+            $dateInterval = \DateInterval::createFromDateString('1 day');
+            //Init Date Period from start date to end date
+            //1 day is added to end date since date period ends before end date. See first comment: http://php.net/manual/en/class.dateperiod.php
+            $dateperiod = new \DatePeriod($start_date, $dateInterval, $end_date);
+
+            foreach ($dateperiod as $day) {
+                array_push($data, 0);
+            }
+        }else{
+            for ($i = 0; $i < 12; $i++){
+                array_push($data, 0);
+            }
         }
+
+
 
             $usagesInRange = $device->energy_usages()->whereBetween('start_time', [$start_date, $end_date])->get();
 
@@ -129,7 +160,9 @@ class DataController extends Controller
                     $data[(int)$carbon->format('j') - 1] += $usage->kw_usage;
                 }
 
-
+                if ($time_frame == 'year'){
+                    $data[(int)$carbon->format('n') - 1] += $usage->kw_usage;
+                }
             }
 
         return $data;

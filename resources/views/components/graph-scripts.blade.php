@@ -61,6 +61,27 @@
 
     }
 
+    function showYear(category_name){
+
+        updateChartButtons(category_name, 'year');
+
+        window['auto__'+category_name+'_time_frame'] = 'year';
+
+        fetch('http://127.0.0.1:8000/api/data/{{$type}}/' + category_name + '/year')
+            .then(function (data) {
+                return data.json();
+            }).then(function (data) {
+            days = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            window['auto__'+category_name+'Chart'].data.labels = days;
+            window['auto__'+category_name+'Chart'].data.datasets[0].data = data;
+
+            window['auto__'+category_name+'Chart'].update();
+
+        });
+
+    }
+
     function updateChartButtons(category_name, time_frame){
         $('#auto__' + category_name + '-chart-buttons').children('a').each(function (index, item) {
             $(item).removeClass('btn-warning');
