@@ -97,7 +97,6 @@
                                                         <div class="progress-bar bg-danger" role="progressbar"
                                                              style="width: 75%" aria-valuenow="75" aria-valuemin="0"
                                                              aria-valuemax="100">£50 / {{$userSetting->gas_budget}}
-                                                            // {{$waterTotalKw}}
                                                         </div>
                                                     </div>
                                                 </div>
