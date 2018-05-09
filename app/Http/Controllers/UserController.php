@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -55,8 +56,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('user.show', compact('user'));
+        if($id != Auth::id())
+            return redirect()->route('user.show', Auth::id());
+        else
+            $user = User::find($id);
+            return view('user.show', compact('user'));
     }
 
     /**
