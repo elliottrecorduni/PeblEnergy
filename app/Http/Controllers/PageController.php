@@ -21,9 +21,16 @@ class PageController extends Controller
 
         if(Auth::check()){
             $userSetting = UserSetting::first();
+
+            $electricityTotalPrice = DeviceCategory::where('name', 'Electricity')->first()->total_price_current_month;
+            $waterTotalPrice = DeviceCategory::where('name', 'Water')->first()->total_price_current_month;
+            $gasTotalPrice = DeviceCategory::where('name', 'Gas')->first()->total_price_current_month;
+
+            $totalMonthPrice = DeviceCategory::getTotalPriceCurrentMonthGroupAttribute(['Electricity', 'Water', 'Gas']);
+
         }
 
-        return view('pages.index', compact('devices', 'userSetting'));
+        return view('pages.index', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice', 'totalMonthPrice'));
     }
 
     public function budget() {

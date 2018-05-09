@@ -62,9 +62,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar bg-success" role="progressbar"
-                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                             aria-valuemax="{{$userSetting->electricity_budget}}">£32
+                                                        <div class="progress-bar text-dark bg-success" role="progressbar"
+                                                             style="width: {{($electricityTotalPrice/$userSetting->electricity_budget) * 100}}%" aria-valuemin="0"
+                                                             aria-valuemax="100">£{{$electricityTotalPrice}}
                                                             / {{$userSetting->electricity_budget}}
                                                         </div>
                                                     </div>
@@ -78,9 +78,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                             style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                                                             aria-valuemax="{{$userSetting->water_budget}}">£25
+                                                        <div class="progress-bar text-dark bg-info" role="progressbar"
+                                                             style="width: {{($waterTotalPrice/$userSetting->water_budget) * 100}}%" aria-valuemin="0"
+                                                             aria-valuemax="100">   £{{$waterTotalPrice}}
                                                             / {{$userSetting->water_budget}}
                                                         </div>
                                                     </div>
@@ -94,9 +94,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar bg-danger" role="progressbar"
-                                                             style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                             aria-valuemax="100">£50 / {{$userSetting->gas_budget}}
+                                                        <div class="progress-bar text-dark bg-danger" role="progressbar"
+                                                             style="width: {{($gasTotalPrice/$userSetting->gas_budget) * 100}}%" aria-valuemin="0"
+                                                             aria-valuemax="100">   £{{$gasTotalPrice}}
+                                                            / {{$userSetting->gas_budget}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -109,9 +110,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar bg-success" role="progressbar"
-                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                             aria-valuemax="100">£108 / {{$userSetting->total_budget}}
+                                                        <div class="progress-bar text-dark bg-success" role="progressbar"
+                                                             style="width: {{($totalMonthPrice/$userSetting->total_budget) * 100}}%" aria-valuemin="0"
+                                                             aria-valuemax="100">   £{{$totalMonthPrice}}
+                                                            / {{$userSetting->total_budget}}
                                                         </div>
                                                     </div>
                                                 </div>

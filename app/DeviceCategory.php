@@ -31,4 +31,15 @@ class DeviceCategory extends Model
         return ( number_format((($this->getTotalKwCurrentMonthAttribute() * $user_setting->kwh_price) / 100), 2)) ;
     }
 
+    public static function getTotalPriceCurrentMonthGroupAttribute(array $categories){
+
+        $total_price = 0;
+
+        foreach ($categories as $category_name){
+            $category = DeviceCategory::where('name', $category_name)->first();
+            $total_price += $category->total_price_current_month;
+        }
+        return ( number_format(($total_price), 2));
+    }
+
 }
