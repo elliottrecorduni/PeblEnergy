@@ -47,6 +47,9 @@
                                     Monthly Budget
                                 </div>
                                 <div class="card-body">
+                                    @if (! \Illuminate\Support\Facades\Auth::check())
+                                        pls login
+                                    @else
                                     <!--Electricity Budget Bar-->
                                     <div class="row">
                                         <div class="col-md-6">
@@ -62,7 +65,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <!--Water Budget Bar-->
+                                <!--Water Budget Bar-->
                                     <div class="row">
                                         <div class="col-md-6">
                                             Water
@@ -77,7 +80,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <!--Gas Budget Bar-->
+                                <!--Gas Budget Bar-->
                                     <div class="row">
                                         <div class="col-md-6">
                                             Gas
@@ -92,7 +95,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <!--Total Budget Bar-->
+                                <!--Total Budget Bar-->
                                     <div class="row">
                                         <div class="col-md-6">
                                             Total
@@ -106,6 +109,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
