@@ -48,68 +48,77 @@
                                 </div>
                                 <div class="card-body">
                                     @if (! \Illuminate\Support\Facades\Auth::check())
-                                        pls login
+                                        Please login to view your budget
                                     @else
-                                    <!--Electricity Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Electricity
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                     style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                     aria-valuemax="{{$userSetting->electricity_budget}}">£32 / {{$userSetting->electricity_budget}}
+                                        @if(is_null($userSetting))
+                                            Please <a href="{{route('pages.settings')}}">save your settings</a> in order
+                                            to view them
+                                        @else
+
+                                        <!--Electricity Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Electricity
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                             aria-valuemax="{{$userSetting->electricity_budget}}">£32
+                                                            / {{$userSetting->electricity_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                <!--Water Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Water
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                                                     aria-valuemax="{{$userSetting->water_budget}}">£25 / {{$userSetting->water_budget}}
+                                            <br>
+                                            <!--Water Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Water
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 45%" aria-valuenow="45" aria-valuemin="0"
+                                                             aria-valuemax="{{$userSetting->water_budget}}">£25
+                                                            / {{$userSetting->water_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                <!--Gas Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Gas
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                     style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                     aria-valuemax="100">£50 / {{$userSetting->gas_budget}} // {{$waterTotalKw}}
+                                            <br>
+                                            <!--Gas Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Gas
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                             style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                                             aria-valuemax="100">£50 / {{$userSetting->gas_budget}}
+                                                            // {{$waterTotalKw}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                <!--Total Budget Bar-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Total
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="progress border border-dark" style="height: 100%">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                     style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                     aria-valuemax="100">£108 / {{$userSetting->total_budget}}
+                                            <br>
+                                            <!--Total Budget Bar-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Total
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="progress border border-dark" style="height: 100%">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                             style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                             aria-valuemax="100">£108 / {{$userSetting->total_budget}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    @endif
+                                            @endif
+                                        @endif
                                 </div>
                             </div>
                         </div>
@@ -122,7 +131,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                        @include('components.graph', ['name' => 'Water', 'type' => 'category'])
+                            @include('components.graph', ['name' => 'Water', 'type' => 'category'])
                         </div>
                     </div>
                     <!--End Row-->
@@ -146,10 +155,10 @@
                                 </thead>
                                 <tbody>
                                 @foreach($devices as $device)
-                                <tr>
-                                    <th>{{$device->name}}</th>
-                                    <td>4 kW/s</td>
-                                </tr>
+                                    <tr>
+                                        <th>{{$device->name}}</th>
+                                        <td>4 kW/s</td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
