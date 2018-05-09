@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6">
                     @include('components.graph', ['name' => 'Electricity', 'type' => 'category', 'header' => '<div style="padding-left: 12px">
-                                    <p><b>Price Per kW:</b> £0.45</p>
+                                    <p><b>Price Per kW:</b> ' . $userSetting->kwh_price . ' pence</p>
 
                                     <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->electricity_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 
@@ -22,7 +22,7 @@
 
                 <!--Water Budget-->
                 <div class="col-md-6">
-                    @include('components.graph', ['name' => 'Water', 'type' => 'category', 'header' => '<p><b>Price Per kW:</b> £0.45</p>
+                    @include('components.graph', ['name' => 'Water', 'type' => 'category', 'header' => '<p><b>Price Per kW:</b> ' . $userSetting->kwh_price . ' pence</p>
 
                             <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->water_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 
@@ -34,7 +34,7 @@
 
                 <!--Gas Chart-->
                 <div class="col-md-6">
-                    @include('components.graph', ['name' => 'Gas', 'type' => 'category', 'header' => '<p><b>Price Per kW:</b> £0.45</p>
+                    @include('components.graph', ['name' => 'Gas', 'type' => 'category', 'header' => '<p><b>Price Per kW:</b> ' . $userSetting->kwh_price . ' pence</p>
 
                             <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->gas_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 

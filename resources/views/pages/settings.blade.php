@@ -37,8 +37,8 @@
 
                                         <div class="form-group">
 
-                                            <label for="kwh_price">Price per kWh</label>
-                                            <input type="text" class="form-control" id="kwh_price" name="kwh_price" placeholder="Price per kWh"
+                                            <label for="kwh_price">Price per kWh (pence)</label>
+                                            <input type="text" class="form-control" id="kwh_price" name="kwh_price" placeholder="Price per kWh (pence)"
                                                    value="{{isset($userSetting->kwh_price) ? $userSetting->kwh_price : 0 }}">
                                         </div>
 
