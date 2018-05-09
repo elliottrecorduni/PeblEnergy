@@ -41,6 +41,6 @@ class Device extends Model
     }
 
     public function getUsageRate10SecondsAttribute(){
-        return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(10))->sum('kw_usage');
+        return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(12))->sum('kw_usage');
     }
 }

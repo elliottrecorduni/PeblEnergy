@@ -45,17 +45,17 @@
 @section('footer')
 
     <script>
-        // (function updateScan() {
-        //     fetch('http://127.0.0.1:8000/components/scan')
-        //         .then(function (data) {
-        //             return data.text();
-        //         }).then(function (data) {
-        //
-        //         var mb = document.getElementById('scan-card');
-        //         mb.innerHTML = data;
-        //     });
-        //     setTimeout(updateScan, 5000);
-        // })();
+        (function updateScan() {
+            fetch('http://127.0.0.1:8000/components/scan')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('scan-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateScan, 5000);
+        })();
     </script>
 
 @endsection
