@@ -23,15 +23,17 @@ class PageController extends Controller
             $userSetting = UserSetting::first();
         }
 
-        $waterTotalKw = DeviceCategory::where('name', 'Water')->first()->total_kw;
-
-        return view('pages.index', compact('devices', 'userSetting', 'waterTotalKw'));
+        return view('pages.index', compact('devices', 'userSetting'));
     }
 
     public function budget() {
-
         $userSetting = UserSetting::first();
-        return view('pages.budget', compact('userSetting'));
+
+        $electricityTotalPrice = DeviceCategory::where('name', 'Electricity')->first()->total_price_current_month;
+        $waterTotalPrice = DeviceCategory::where('name', 'Water')->first()->total_price_current_month;
+        $gasTotalPrice = DeviceCategory::where('name', 'Gas')->first()->total_price_current_month;
+
+        return view('pages.budget', compact('userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice'));
     }
 
     public function settings() {

@@ -15,7 +15,7 @@
 
                                     <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->electricity_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 
-                                    <p><b>Spent This Month:</b> £192</p>
+                                    <p><b>Spent This Month:</b> £' . $electricityTotalPrice . '</p>
                                 </div>'])
                 </div>
 
@@ -26,7 +26,7 @@
 
                             <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->water_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 
-                            <p><b>Spent This Month:</b> £192</p>'])
+                            <p><b>Spent This Month:</b> £' . $waterTotalPrice . '</p>'])
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
 
                             <p><b>Budget For Month:</b> <span style="padding-right:10px;">£' . $userSetting->gas_budget .'</span><i class="fas fa-pencil-alt"></i></p>
 
-                            <p><b>Spent This Month:</b> £192</p>'])
+                            <p><b>Spent This Month:</b> £' . $gasTotalPrice . '</p>'])
                 </div>
 
                 <!--Overall Chart-->
