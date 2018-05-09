@@ -36,7 +36,7 @@ class PageController extends Controller
 
     public function settings() {
 
-        $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
+        $userSetting = UserSetting::first();
         return view('pages.settings', compact('userSetting'));
     }
 }
