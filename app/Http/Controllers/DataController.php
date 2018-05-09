@@ -140,14 +140,17 @@ class DataController extends Controller
 
         if ($type == 'category'){
             $collection = DeviceCategory::where('name', $name)->first();
+            $file_name = 'Category_' . $name . '_Energy_Usage_Data.csv';
         }
 
         if ($type == 'device'){
             $collection = Device::where('id', $name)->first();
+            $file_name = 'Device_' . $name . '_Energy_Usage_Data.csv';
         }
 
         $csvExporter = new \Laracsv\Export();
-        $csvExporter->build($collection->energy_usages()->get(), ['id' => 'ID', 'device_id' => 'Device ID', 'start_time' => 'Start Time', 'end_time' => 'End Time', 'kw_usage' => 'kW Used'])->download();
+        $csvExporter->build($collection->energy_usages()->get(), ['id' => 'Usage ID', 'device_id' => 'Device ID', 'start_time' => 'Start Time', 'end_time' => 'End Time', 'kw_usage' => 'kW Used'])
+            ->download($file_name);
     }
 
 }
