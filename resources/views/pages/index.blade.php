@@ -15,22 +15,22 @@
                         <div class="col-md-6">
                             <div class="card card-padding" style="height:258px">
                                 <div class="card-header bg-dark text-white">
-                                    Real Time Data Usage
+                                    Real Time Data Usage (kW 10/s)
                                 </div>
                                 <div class="card-body" id="real-time-data-usage-card">
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-bolt"></i> Electricity</td>
-                                            <td class="text-danger">0kW 10/s</td>
+                                            <td class="text-danger">0 kW</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-tint"></i> Water</td>
-                                            <td class="text-primary">0kW 10/s</td>
+                                            <td class="text-primary">0 kW</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-fire"></i> Gas</td>
-                                            <td class="text-warning">0kW 10/s</td>
+                                            <td class="text-warning">0 kW</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -150,14 +150,14 @@
                                 <thead>
                                 <tr>
                                     <th scope="x`col">Device</th>
-                                    <th scope="col">Usage</th>
+                                    <th scope="col">Usage (kW 10/s)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($devices as $device)
                                     <tr>
-                                        <th>{{$device->name}}</th>
-                                        <td>4 kW/s</td>
+                                        <th class="table-danger">{{$device->name}}</th>
+                                        <td>0 kW</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

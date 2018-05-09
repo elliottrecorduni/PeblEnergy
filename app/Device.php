@@ -38,6 +38,9 @@ class Device extends Model
     public function getIsAliveAttribute(){
         $recent_data = $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(7))->get();
         return($recent_data->count() > 0);
+    }
 
+    public function getUsageRate10SecondsAttribute(){
+        return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(10))->sum('kw_usage');
     }
 }
