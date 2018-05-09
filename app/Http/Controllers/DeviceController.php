@@ -50,6 +50,7 @@ class DeviceController extends Controller
         $device->name = $request->name;
         $device->category_id = $request->category_id;
         $device->mac_address = $request->mac_address;
+        $device->api_token = $request->api_token;
 
         $device->save();
 
@@ -96,6 +97,7 @@ class DeviceController extends Controller
         $device->name = $request->name;
         $device->category_id = $request->category_id;
         $device->mac_address = $request->mac_address;
+        $device->api_token = $request->api_token;
 
         $device->save();
 

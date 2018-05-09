@@ -30,4 +30,11 @@
                 @endforeach
             </select>
         </div>
+        <hr>
+        <div class="form-group">
+            <label for="api_token">API Token - <span class="text-danger">Never share your API Token</span></label>
+            <a class="btn btn-sm btn-info float-right" onclick="newAPIToken()">Generate New Token</a>
+            <input type="text" class="form-control" id="api_token" name="api_token" value="{{$device->api_token}}"
+                   placeholder="Enter API Token">
+        </div>
     </form>
