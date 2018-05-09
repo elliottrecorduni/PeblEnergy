@@ -43,7 +43,22 @@
         },
 
         // Configuration options go here
-        options: {}
+        options: {
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "kW"
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Time Frame"
+                    }
+                }]
+            }
+        }
     });
 
     var auto__{{$name}}_time_frame = 'week';

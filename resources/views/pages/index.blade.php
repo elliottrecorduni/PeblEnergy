@@ -43,7 +43,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header bg-dark text-white">
-                                    Monthly Budget
+                                    Real Time Monthly Budget
                                 </div>
                                 <div class="card-body" id="monthly-budget-card">
                                     @if(is_null($userSetting))
