@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Device extends Model
@@ -32,5 +33,11 @@ class Device extends Model
 
     public function getTotalKwAttribute(){
         return $this->energy_usages()->sum('kw_usage');
+    }
+
+    public function getIsAliveAttribute(){
+        $recent_data = $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(7))->get();
+        return($recent_data->count() > 0);
+
     }
 }

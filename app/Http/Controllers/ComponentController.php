@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
 use App\DeviceCategory;
 use App\UserSetting;
 use Illuminate\Http\Request;
@@ -30,5 +31,12 @@ class ComponentController extends Controller
         $gasUsageRate = DeviceCategory::where('name', 'Gas')->first()->usage_rate_10_seconds;
 
         return view('components.real-time-data-usage', compact('electricityUsageRate', 'waterUsageRate', 'gasUsageRate'));
+    }
+
+    public function activeDevices(){
+
+        $devices = Device::all();
+
+        return view('components.active-devices', compact('devices'));
     }
 }

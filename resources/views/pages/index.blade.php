@@ -22,15 +22,15 @@
                                         <tbody>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-bolt"></i> Electricity</td>
-                                            <td class="text-danger">{{$electricityUsageRate}}kW 10/s</td>
+                                            <td class="text-danger">0kW 10/s</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-tint"></i> Water</td>
-                                            <td class="text-primary">{{$waterUsageRate}}kW 10/s</td>
+                                            <td class="text-primary">0kW 10/s</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-fire"></i> Gas</td>
-                                            <td class="text-warning">{{$gasUsageRate}}kW 10/s</td>
+                                            <td class="text-warning">0kW 10/s</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -145,7 +145,7 @@
                         <div class="card-header bg-dark text-white">
                             Active Devices
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="active-devices-card">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -199,6 +199,18 @@
                 mb.innerHTML = data;
             });
             setTimeout(updateRealTimeUsage, 5000);
+        })();
+
+        (function updateActiveDevices() {
+            fetch('http://127.0.0.1:8000/components/active-devices')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('active-devices-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateActiveDevices, 5000);
         })();
     </script>
 

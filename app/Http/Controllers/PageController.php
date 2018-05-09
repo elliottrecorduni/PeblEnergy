@@ -27,15 +27,11 @@ class PageController extends Controller
         $waterTotalPrice = DeviceCategory::where('name', 'Water')->first()->total_price_current_month;
         $gasTotalPrice = DeviceCategory::where('name', 'Gas')->first()->total_price_current_month;
 
-        $electricityUsageRate = DeviceCategory::where('name', 'Electricity')->first()->usage_rate_10_seconds;
-        $waterUsageRate = DeviceCategory::where('name', 'Water')->first()->usage_rate_10_seconds;
-        $gasUsageRate = DeviceCategory::where('name', 'Gas')->first()->usage_rate_10_seconds;
-
         $totalMonthPrice = DeviceCategory::getTotalPriceCurrentMonthGroupAttribute(['Electricity', 'Water', 'Gas']);
 
 
         return view('pages.index', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice',
-            'gasTotalPrice', 'totalMonthPrice', 'electricityUsageRate', 'waterUsageRate', 'gasUsageRate'));
+            'gasTotalPrice', 'totalMonthPrice'));
     }
 
     public function budget()
