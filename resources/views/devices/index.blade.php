@@ -11,8 +11,9 @@
                         <div class="card-header bg-dark text-white">
                             Devices
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#new_device_modal"
-                                    style="float:right">New Device
+                            style="float:right">New Device
                             </button>
+                            <a href="{{route('pages.scan')}}" class="btn btn-info btn-sm mr-2 float-right">Scan</a>
                         </div>
                         <div class="card-body">
                             @if (!$devices || $devices->count() > 0)

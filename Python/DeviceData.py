@@ -16,13 +16,13 @@ data = None
 
 HOST_NAME = 'google.com'  # link to page where data should be posted
 interval = 5.0  # time between sending data to server in seconds
-api_token = 'xduewIopuP'
-device_name = 'Fridge'
+
+api_token = 'n2RpieW8g1'
 
 # getting device MAC address
 mac = get_mac()
 v = mac
-s = ':'.join(("%012X" % mac)[i:i + 2] for i in range(0, 12, 2))
+s = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
 
 
 # pinging the link to know if server is up
@@ -37,10 +37,10 @@ def ping(host):
         stdout, stderr = proc.communicate()
         if proc.returncode == 0:
             server_up = True
-            # print('True')
+            #print('True')
         else:
             server_up = False
-            # print('False')
+            #print('False')
 
     else:
         proc = subprocess.Popen(
@@ -79,45 +79,49 @@ def sendData():
         now = datetime.datetime.now()
         if server_up:
 
-            to_post = {'mac_address': s, 'kw_usage': round(random.uniform(0, 1), 2), 'Status': 'Alive',
-                       'start_time': str(now)
+            to_post = {'mac_address': s, 'kw_usage': round(random.uniform(0, 1), 2), 'Status': 'Alive', 'start_time': str(now)
                 , 'end_time': str(now + timedelta(seconds=interval)), 'api_token': api_token}
 
             headers = {'Content-type': 'application/json'}
 
-            r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers)
+            r = requests.post('http://127.0.0.1:8000/api/submit', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
-            data = str(now) + ': posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code)
 
-            if (r.status_code == 404):
+            if(r.status_code == 404):
                 timer.cancel()
                 scanMode()
 
-            if (r.status_code == 401):
+            if(r.status_code == 401):
                 timer.cancel()
                 print(r.text)
+
+
 
     else:
         print('Network error')
 
-
 # switch to scan mode.
 def scanMode():
+    global api_token
+
     if device_up:
-        scanTimer = threading.Timer(5, scanMode)
+        scanTimer = threading.Timer( 5, scanMode)
         scanTimer.start()
         ping(HOST_NAME)
         if server_up:
 
-            to_post = {'mac_address': s, 'name': device_name}
+            to_post = {'mac_address': s, 'name': 'Scan Device'}
 
             headers = {'Content-type': 'application/json'}
 
-            r = requests.post('http://127.0.0.1:8000/api/scan', data=json.dumps(to_post), headers=headers)
+            r = requests.post('http://127.0.0.1:8000/api/scan', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
 
-            if (r.status_code == 405):
+            if(r.status_code == 201):
                 scanTimer.cancel()
+                js = r.json()
+                print(js['api_token'])
+                api_token = js['api_token']
                 sendData()
 
 

@@ -46,80 +46,80 @@
                                 <div class="card-header bg-dark text-white">
                                     Monthly Budget
                                 </div>
-                                <div class="card-body">
-                                    @if (! \Illuminate\Support\Facades\Auth::check())
-                                        Please login to view your budget
+                                <div class="card-body" id="monthly-budget-card">
+                                    @if(is_null($userSetting))
+                                        Please <a href="{{route('pages.settings')}}">save your settings</a> in order
+                                        to view them
                                     @else
-                                        @if(is_null($userSetting))
-                                            Please <a href="{{route('pages.settings')}}">save your settings</a> in order
-                                            to view them
-                                        @else
 
-                                        <!--Electricity Budget Bar-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    Electricity
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar text-dark bg-success" role="progressbar"
-                                                             style="width: {{($electricityTotalPrice/$userSetting->electricity_budget) * 100}}%" aria-valuemin="0"
-                                                             aria-valuemax="100">£{{$electricityTotalPrice}}
-                                                            / {{$userSetting->electricity_budget}}
-                                                        </div>
+                                    <!--Electricity Budget Bar-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Electricity
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="progress border border-dark" style="height: 100%">
+                                                    <div class="progress-bar text-dark bg-success" role="progressbar"
+                                                         style="width: {{($electricityTotalPrice/$userSetting->electricity_budget) * 100}}%"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100">£{{$electricityTotalPrice}}
+                                                        / {{$userSetting->electricity_budget}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <!--Water Budget Bar-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    Water
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar text-dark bg-info" role="progressbar"
-                                                             style="width: {{($waterTotalPrice/$userSetting->water_budget) * 100}}%" aria-valuemin="0"
-                                                             aria-valuemax="100">   £{{$waterTotalPrice}}
-                                                            / {{$userSetting->water_budget}}
-                                                        </div>
+                                        </div>
+                                        <br>
+                                        <!--Water Budget Bar-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Water
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="progress border border-dark" style="height: 100%">
+                                                    <div class="progress-bar text-dark bg-info" role="progressbar"
+                                                         style="width: {{($waterTotalPrice/$userSetting->water_budget) * 100}}%"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100"> £{{$waterTotalPrice}}
+                                                        / {{$userSetting->water_budget}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <!--Gas Budget Bar-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    Gas
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar text-dark bg-danger" role="progressbar"
-                                                             style="width: {{($gasTotalPrice/$userSetting->gas_budget) * 100}}%" aria-valuemin="0"
-                                                             aria-valuemax="100">   £{{$gasTotalPrice}}
-                                                            / {{$userSetting->gas_budget}}
-                                                        </div>
+                                        </div>
+                                        <br>
+                                        <!--Gas Budget Bar-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Gas
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="progress border border-dark" style="height: 100%">
+                                                    <div class="progress-bar text-dark bg-danger" role="progressbar"
+                                                         style="width: {{($gasTotalPrice/$userSetting->gas_budget) * 100}}%"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100"> £{{$gasTotalPrice}}
+                                                        / {{$userSetting->gas_budget}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <!--Total Budget Bar-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    Total
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="progress border border-dark" style="height: 100%">
-                                                        <div class="progress-bar text-dark bg-success" role="progressbar"
-                                                             style="width: {{($totalMonthPrice/$userSetting->total_budget) * 100}}%" aria-valuemin="0"
-                                                             aria-valuemax="100">   £{{$totalMonthPrice}}
-                                                            / {{$userSetting->total_budget}}
-                                                        </div>
+                                        </div>
+                                        <br>
+                                        <!--Total Budget Bar-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Total
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="progress border border-dark" style="height: 100%">
+                                                    <div class="progress-bar text-dark bg-success" role="progressbar"
+                                                         style="width: {{($totalMonthPrice/$userSetting->total_budget) * 100}}%"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100"> £{{$totalMonthPrice}}
+                                                        / {{$userSetting->total_budget}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endif
-                                        @endif
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -176,6 +176,21 @@
 @endsection
 
 @section('footer')
+
+    <script>
+        (function update() {
+            fetch('http://127.0.0.1:8000/components/monthly-budget')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('monthly-budget-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(update, 5000);
+        })();
+    </script>
+
     @include('components.graph-scripts', ['type' => 'category'])
 @endsection
 

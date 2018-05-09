@@ -15,25 +15,26 @@ class PageController extends Controller
         $this->middleware('auth')->except('index');
     }
 
-    public function index(){
+    public function index()
+    {
 
         $devices = Device::all();
 
-        if(Auth::check()){
-            $userSetting = UserSetting::first();
 
-            $electricityTotalPrice = DeviceCategory::where('name', 'Electricity')->first()->total_price_current_month;
-            $waterTotalPrice = DeviceCategory::where('name', 'Water')->first()->total_price_current_month;
-            $gasTotalPrice = DeviceCategory::where('name', 'Gas')->first()->total_price_current_month;
+        $userSetting = UserSetting::first();
 
-            $totalMonthPrice = DeviceCategory::getTotalPriceCurrentMonthGroupAttribute(['Electricity', 'Water', 'Gas']);
+        $electricityTotalPrice = DeviceCategory::where('name', 'Electricity')->first()->total_price_current_month;
+        $waterTotalPrice = DeviceCategory::where('name', 'Water')->first()->total_price_current_month;
+        $gasTotalPrice = DeviceCategory::where('name', 'Gas')->first()->total_price_current_month;
 
-        }
+        $totalMonthPrice = DeviceCategory::getTotalPriceCurrentMonthGroupAttribute(['Electricity', 'Water', 'Gas']);
+
 
         return view('pages.index', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice', 'totalMonthPrice'));
     }
 
-    public function budget() {
+    public function budget()
+    {
         $userSetting = UserSetting::first();
 
         $electricityTotalPrice = DeviceCategory::where('name', 'Electricity')->first()->total_price_current_month;
@@ -43,7 +44,8 @@ class PageController extends Controller
         return view('pages.budget', compact('userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice'));
     }
 
-    public function settings() {
+    public function settings()
+    {
 
         $userSetting = UserSetting::first();
         return view('pages.settings', compact('userSetting'));
