@@ -31,6 +31,13 @@
                             @endforeach
                         </select>
                     </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="api_token">API Token - <span class="text-danger">Never share your API Token</span></label>
+                        <a class="btn btn-sm btn-info float-right" onclick="newAPIToken()">Generate New Token</a>
+                        <input type="text" class="form-control" id="api_token" name="api_token" value="{{str_random(10)}}"
+                               placeholder="Enter API Token">
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
@@ -42,5 +49,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

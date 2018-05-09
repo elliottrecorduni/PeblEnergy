@@ -12,8 +12,8 @@
             <a class="btn text-light btn-secondary btn-warning button-spacing" onclick="showWeek('{{$name}}')" id="btn-week">Week</a>
             <a class="btn text-light btn-secondary button-spacing" onclick="showMonth('{{$name}}')" id="btn-month">Month</a>
             {{--<button class="btn btn-secondary button-spacing">1 Year</button>--}}
-            <button class="btn btn-secondary button-spacing float-right"><i
-                        class="fas fa-download"></i></button>
+            <a class="btn text-light btn-secondary button-spacing float-right" href="{{route('data.export', [$type, $name])}}"><i
+                        class="fas fa-download"></i></a>
         </row>
         <br>
         <row>
@@ -43,7 +43,22 @@
         },
 
         // Configuration options go here
-        options: {}
+        options: {
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "kW"
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Time Frame"
+                    }
+                }]
+            }
+        }
     });
 
     var auto__{{$name}}_time_frame = 'week';

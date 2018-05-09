@@ -22,4 +22,5 @@ Route::post('/submit', 'DeviceController@submit');
 
 Route::get('/data/category/{category_name}/{time_frame}', 'DataController@category');
 Route::get('/data/device/{device_mac}/{time_frame}', 'DataController@device');
+Route::get('export/{type}/{name}', 'DataController@exportCollection')->name('data.export');
 

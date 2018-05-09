@@ -112,6 +112,14 @@
 @endsection
 
 @section('footer')
+
+    <script>
+        function newAPIToken(){
+            var tokenInput = document.getElementById('api_token');
+            tokenInput.value = Math.random().toString(36).substring(2, 15);
+        }
+    </script>
+
     <script>
         function activateEditDevModal($id){
             $('#edit_device_modal').find('.modal-body').load('{{url('devices')}}/' + $id + '/edit');

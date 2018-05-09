@@ -30,7 +30,8 @@ class PageController extends Controller
         $totalMonthPrice = DeviceCategory::getTotalPriceCurrentMonthGroupAttribute(['Electricity', 'Water', 'Gas']);
 
 
-        return view('pages.index', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice', 'gasTotalPrice', 'totalMonthPrice'));
+        return view('pages.index', compact('devices', 'userSetting', 'electricityTotalPrice', 'waterTotalPrice',
+            'gasTotalPrice', 'totalMonthPrice'));
     }
 
     public function budget()

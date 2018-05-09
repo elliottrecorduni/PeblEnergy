@@ -15,22 +15,22 @@
                         <div class="col-md-6">
                             <div class="card card-padding" style="height:258px">
                                 <div class="card-header bg-dark text-white">
-                                    Real Time Data Usage
+                                    Real Time Data Usage (kW 10/s)
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" id="real-time-data-usage-card">
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-bolt"></i> Electricity</td>
-                                            <td class="text-danger">12 m^3/s</td>
+                                            <td class="text-danger">0 kW</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-tint"></i> Water</td>
-                                            <td class="text-primary">12 m^3/s</td>
+                                            <td class="text-primary">0 kW</td>
                                         </tr>
                                         <tr>
                                             <td class="text-dark"><i class="fas fa-fire"></i> Gas</td>
-                                            <td class="text-warning">12 m^3/s</td>
+                                            <td class="text-warning">0 kW</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -43,7 +43,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header bg-dark text-white">
-                                    Monthly Budget
+                                    Real Time Monthly Budget
                                 </div>
                                 <div class="card-body" id="monthly-budget-card">
                                     @if(is_null($userSetting))
@@ -145,19 +145,19 @@
                         <div class="card-header bg-dark text-white">
                             Active Devices
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="active-devices-card">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th scope="x`col">Device</th>
-                                    <th scope="col">Usage</th>
+                                    <th scope="col">Usage (kW 10/s)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($devices as $device)
                                     <tr>
-                                        <th>{{$device->name}}</th>
-                                        <td>4 kW/s</td>
+                                        <th class="table-danger">{{$device->name}}</th>
+                                        <td>0 kW</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -177,7 +177,7 @@
 @section('footer')
 
     <script>
-        (function update() {
+        (function updateMonthlyBudget() {
             fetch('http://127.0.0.1:8000/components/monthly-budget')
                 .then(function (data) {
                     return data.text();
@@ -186,7 +186,31 @@
                 var mb = document.getElementById('monthly-budget-card');
                 mb.innerHTML = data;
             });
-            setTimeout(update, 5000);
+            setTimeout(updateMonthlyBudget, 5000);
+        })();
+
+        (function updateRealTimeUsage() {
+            fetch('http://127.0.0.1:8000/components/real-time-data-usage')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('real-time-data-usage-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateRealTimeUsage, 5000);
+        })();
+
+        (function updateActiveDevices() {
+            fetch('http://127.0.0.1:8000/components/active-devices')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
+
+                var mb = document.getElementById('active-devices-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateActiveDevices, 5000);
         })();
     </script>
 

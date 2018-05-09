@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Response;
 
 class DeviceController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,6 +56,7 @@ class DeviceController extends Controller
         $device->name = $request->name;
         $device->category_id = $request->category_id;
         $device->mac_address = $request->mac_address;
+        $device->api_token = $request->api_token;
 
         $device->save();
 
@@ -96,6 +103,7 @@ class DeviceController extends Controller
         $device->name = $request->name;
         $device->category_id = $request->category_id;
         $device->mac_address = $request->mac_address;
+        $device->api_token = $request->api_token;
 
         $device->save();
 
@@ -150,7 +158,7 @@ class DeviceController extends Controller
         $allData = ScanDevice::all();
         $allData->each(function ($device){
             $created_at = Carbon::parse($device->created_at);
-            if ($created_at < Carbon::now()->subMinute(5) ){
+            if ($created_at < Carbon::now()->subMinute(1) ){
                 $device->delete();
             }
         });
@@ -181,7 +189,6 @@ class DeviceController extends Controller
 
     public function viewScan(){
         $allScans = ScanDevice::all();
-
         return view('pages.scan', compact('allScans'));
     }
 

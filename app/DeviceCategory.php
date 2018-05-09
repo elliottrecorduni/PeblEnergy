@@ -39,7 +39,17 @@ class DeviceCategory extends Model
             $category = DeviceCategory::where('name', $category_name)->first();
             $total_price += $category->total_price_current_month;
         }
-        return ( number_format(($total_price), 2));
+        return ( number_format(($total_price), 2, '.', ''));
+    }
+
+    public function getUsageRate10SecondsAttribute(){
+        return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(10))->sum('kw_usage');
+    }
+
+    public function getExportAttribute(){
+        $users = $this->energy_usages()->get();
+        $csvExporter = new \Laracsv\Export();
+        $csvExporter->build($users, ['*'])->download();
     }
 
 }

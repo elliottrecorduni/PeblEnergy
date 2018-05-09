@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
+use App\DeviceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -132,6 +134,20 @@ class DataController extends Controller
 
         return $data;
 
+    }
+
+    public function exportCollection($type, $name){
+
+        if ($type == 'category'){
+            $collection = DeviceCategory::where('name', $name)->first();
+        }
+
+        if ($type == 'device'){
+            $collection = Device::where('id', $name)->first();
+        }
+
+        $csvExporter = new \Laracsv\Export();
+        $csvExporter->build($collection->energy_usages()->get(), ['id' => 'ID', 'device_id' => 'Device ID', 'start_time' => 'Start Time', 'end_time' => 'End Time', 'kw_usage' => 'kW Used'])->download();
     }
 
 }

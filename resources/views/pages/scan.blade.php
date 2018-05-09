@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="col-md-10">
-        <div class="card card-padding">
+        <div class="card card-padding" id="scan-card">
             <div class="card-header bg-dark text-white">
                 Available Devices to Pair
             </div>
@@ -44,25 +44,18 @@
 
 @section('footer')
 
-    {{--<script>--}}
-        {{--var ctx = document.getElementById('totalBudget7D').getContext('2d');--}}
-        {{--var chart = new Chart(ctx, {--}}
-            {{--// The type of chart we want to create--}}
-            {{--type: 'line',--}}
+    <script>
+        (function updateScan() {
+            fetch('http://127.0.0.1:8000/components/scan')
+                .then(function (data) {
+                    return data.text();
+                }).then(function (data) {
 
-            {{--// The data for our dataset--}}
-            {{--data: {--}}
-                {{--labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],--}}
-                {{--datasets: [{--}}
-                    {{--label: "Overall Weekly Water Usage",--}}
-                    {{--backgroundColor: 'rgb(255, 99, 132)',--}}
-                    {{--borderColor: 'rgb(255, 99, 132)',--}}
-                    {{--data: [0, 50, 40, 150, 40, 180, 120],--}}
-                {{--}]--}}
-            {{--},--}}
+                var mb = document.getElementById('scan-card');
+                mb.innerHTML = data;
+            });
+            setTimeout(updateScan, 5000);
+        })();
+    </script>
 
-            {{--// Configuration options go here--}}
-            {{--options: {}--}}
-        {{--});--}}
-    {{--</script>--}}
 @endsection
