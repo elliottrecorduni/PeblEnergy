@@ -24,7 +24,9 @@ Route::put('/user/changepassword/{id}', 'UserController@changePassword')->name('
 Route::resource('/user', 'UserController', ['except' => ['create', 'index', 'store', 'destroy']]);
 Route::resource('/devices', 'DeviceController');
 Route::post('/devices/pair', 'DeviceController@pair')->name('devices.pair');
-Route::get('/scan', 'DeviceController@viewScan');
+Route::get('/scan', 'DeviceController@viewScan')->name('pages.scan');
 
 
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+
+Route::get('components/monthly-budget', 'ComponentController@monthlyBudget')->name('components.monthly-budget');
