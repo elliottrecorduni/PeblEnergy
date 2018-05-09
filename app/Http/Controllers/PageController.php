@@ -29,12 +29,14 @@ class PageController extends Controller
     }
 
     public function budget() {
-        return view('pages.budget');
+
+        $userSetting = UserSetting::first();
+        return view('pages.budget', compact('userSetting'));
     }
 
     public function settings() {
 
-        $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
+        $userSetting = UserSetting::first();
         return view('pages.settings', compact('userSetting'));
     }
 }
