@@ -15,7 +15,7 @@ class DeviceController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['submit', 'scan', 'pair']);
     }
 
     /**
@@ -125,6 +125,9 @@ class DeviceController extends Controller
     }
 
     public function submit(Request $request){
+
+        error_log('yesy');
+
         $device = Device::where('mac_address', $request->mac_address)->first();
 
         if (! is_null($device)){
@@ -154,16 +157,6 @@ class DeviceController extends Controller
 
     public function scan(Request $request){
 
-        //  Delete all data 5 minutes old.
-        $allData = ScanDevice::all();
-        $allData->each(function ($device){
-            $created_at = Carbon::parse($device->created_at);
-            if ($created_at < Carbon::now()->subMinute(1) ){
-                $device->delete();
-            }
-        });
-
-
         $device = Device::where('mac_address', $request->mac_address)->first();
         if($device){
             return Response::json(array(
@@ -188,8 +181,15 @@ class DeviceController extends Controller
     }
 
     public function viewScan(){
-        $allScans = ScanDevice::all();
-        return view('pages.scan', compact('allScans'));
+        $allScanDevices = ScanDevice::all();
+
+        $allScanDevices->each(function ($device){
+            if ($device->created_at < Carbon::now()->subSeconds(5)){
+                $device->delete();
+            }
+        });
+
+        return view('pages.scan', compact('allScanDevices'));
     }
 
     public function pair(Request $request){

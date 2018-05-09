@@ -23,13 +23,12 @@ Route::resource('/device-categories', 'DeviceCategoryController');
 Route::put('/user/changepassword/{id}', 'UserController@changePassword')->name('user.changePassword');
 Route::resource('/user', 'UserController', ['except' => ['create', 'index', 'store', 'destroy']]);
 Route::resource('/devices', 'DeviceController');
-Route::post('/devices/pair', 'DeviceController@pair')->name('devices.pair');
 Route::get('/scan', 'DeviceController@viewScan')->name('pages.scan');
 
 
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 
 Route::get('components/monthly-budget', 'ComponentController@monthlyBudget')->name('components.monthly-budget');
-Route::get('components/real-time-data-usage', 'ComponentController@realTimeDatausage')->name('components.real-time-data-usage');
+Route::get('components/real-time-data-usage', 'ComponentController@realTimeDataUsage')->name('components.real-time-data-usage');
 Route::get('components/active-devices', 'ComponentController@activeDevices')->name('components.active-devices');
 Route::get('components/scan', 'ComponentController@scan')->name('components.scan');

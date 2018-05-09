@@ -2,13 +2,13 @@
     Available Devices to Pair
 </div>
 
-@if($allScans->count() > 0)
+@if($allScanDevices->count() > 0)
     <div class="card-body text-center">
         <table class="table">
             <th>Name</th>
             <th>Mac Address</th>
             <th>Action</th>
-            @foreach($allScans as $scan)
+            @foreach($allScanDevices as $scan)
                 <tr>
                     <td>{{$scan->name}}</td>
                     <td>{{$scan->mac_address}}</td>
