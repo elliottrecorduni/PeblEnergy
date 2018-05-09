@@ -78,7 +78,7 @@ class UserSettingController extends Controller
     public function update(Request $request, UserSetting $userSetting)
     {
         if (Auth::check()) {
-            $userSetting = UserSetting::where('id', '=', Auth::user()->id)->first();
+            $userSetting = UserSetting::first();
 
             if (!empty($userSetting)) {
 

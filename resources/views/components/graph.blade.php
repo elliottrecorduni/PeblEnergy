@@ -1,8 +1,10 @@
 <div class="card card-padding">
     <div class="card-header bg-dark text-white">
-        {{empty($real_name) ? $name : $real_name}} Usage
-
+        {{empty($real_name) ? $name : $real_name}} Usage (kW)
     </div>
+
+    {!! !empty($header) ? $header : '' !!}
+
     <div class="card-body text-center">
         <row id="auto__{{$name}}-chart-buttons">
             {{--<button class="btn btn-secondary button-spacing">Custom</button>--}}
