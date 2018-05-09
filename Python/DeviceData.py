@@ -35,10 +35,10 @@ else:
 # getting device MAC address
 mac = get_mac()
 v = mac
-#s = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
+s = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
 
 #For testing new devices
-s = 'AA:AA:AA:AA:AA:CC'
+#s = 'AA:AA:AA:AA:AA:CC'
 
 
 # pinging the link to know if server is up
@@ -136,7 +136,7 @@ def scanMode():
             headers = {'Content-type': 'application/json'}
 
             r = requests.post('http://' + HOST_NAME + '/api/scan', data=json.dumps(to_post), headers=headers, verify=False)
-            print('posted data to server: ' + str(json.dumps(to_post)) + 'Status: ' + str(r.status_code))
+            print('posted data to server: ' + str(json.dumps(to_post)) + '\n\nStatus: ' + str(r.status_code))
 
             if(r.status_code == 201):
                 scanTimer.cancel()
