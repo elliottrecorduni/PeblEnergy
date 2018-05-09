@@ -46,4 +46,10 @@ class DeviceCategory extends Model
         return $this->energy_usages()->where('start_time', '>', Carbon::now()->subSeconds(10))->sum('kw_usage');
     }
 
+    public function getExportAttribute(){
+        $users = $this->energy_usages()->get();
+        $csvExporter = new \Laracsv\Export();
+        $csvExporter->build($users, ['*'])->download();
+    }
+
 }
