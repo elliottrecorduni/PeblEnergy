@@ -39,7 +39,7 @@ class DeviceCategory extends Model
             $category = DeviceCategory::where('name', $category_name)->first();
             $total_price += $category->total_price_current_month;
         }
-        return ( number_format(($total_price), 2));
+        return ( number_format(($total_price), 2, '.', ''));
     }
 
 }
