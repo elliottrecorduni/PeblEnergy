@@ -29,7 +29,9 @@ class PageController extends Controller
     }
 
     public function budget() {
-        return view('pages.budget');
+
+        $userSetting = UserSetting::first();
+        return view('pages.budget', compact('userSetting'));
     }
 
     public function settings() {
