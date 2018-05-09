@@ -32,3 +32,4 @@ Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 Route::get('components/monthly-budget', 'ComponentController@monthlyBudget')->name('components.monthly-budget');
 Route::get('components/real-time-data-usage', 'ComponentController@realTimeDatausage')->name('components.real-time-data-usage');
 Route::get('components/active-devices', 'ComponentController@activeDevices')->name('components.active-devices');
+Route::get('components/scan', 'ComponentController@scan')->name('components.scan');

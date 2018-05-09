@@ -152,7 +152,7 @@ class DeviceController extends Controller
         $allData = ScanDevice::all();
         $allData->each(function ($device){
             $created_at = Carbon::parse($device->created_at);
-            if ($created_at < Carbon::now()->subMinute(5) ){
+            if ($created_at < Carbon::now()->subMinute(1) ){
                 $device->delete();
             }
         });
@@ -183,7 +183,6 @@ class DeviceController extends Controller
 
     public function viewScan(){
         $allScans = ScanDevice::all();
-
         return view('pages.scan', compact('allScans'));
     }
 

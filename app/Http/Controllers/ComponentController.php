@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Device;
 use App\DeviceCategory;
+use App\ScanDevice;
 use App\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,12 @@ class ComponentController extends Controller
     }
 
     public function activeDevices(){
-
         $devices = Device::all();
-
         return view('components.active-devices', compact('devices'));
+    }
+
+    public function scan(){
+        $allScans = ScanDevice::all();
+        return view('components.scan', compact('allScans'));
     }
 }
