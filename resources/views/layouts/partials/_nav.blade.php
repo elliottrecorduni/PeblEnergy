@@ -7,7 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float: right">
         <div class="navbar-nav ml-auto" style="float: right">
 
-
             @if(\Illuminate\Support\Facades\Auth::check())
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
@@ -16,8 +15,12 @@
                         Notifications
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-primary" href="#">New Device: Kettle</a>
-                        <a class="dropdown-item text-primary" href="#">Weekly Budget Met!</a>
+
+                        {{--@if( $waterTotalPrice > $userSetting->water_budget)--}}
+                            {{--<a class="dropdown-item text-primary" href="#">{{$waterTotalPrice}}</a>--}}
+                            {{--@else--}}
+                            {{--<a class="dropdown-item text-primary" href="#">No notificiations to show</a>--}}
+                        {{--@endif--}}
                     </div>
                 </li>
 
