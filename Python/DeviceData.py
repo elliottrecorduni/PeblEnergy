@@ -15,7 +15,7 @@ start_time = None
 end_time = None
 data = None
 
-HOST_NAME = '127.0.0.1:8000'  # link to page where data should be posted
+HOST_NAME = 's4907869.bucomputing.uk'  # link to page where data should be posted
 interval = 5.0  # time between sending data to server in seconds
 
 DEVICE_NAME = 'Computer'
@@ -35,10 +35,10 @@ else:
 # getting device MAC address
 mac = get_mac()
 v = mac
-s = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
+#s = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
 
 #For testing new devices
-#s = 'AA:AA:AA:AA:AA:CC'
+s = 'AA:AA:AA:AA:AA:DD'
 
 
 # pinging the link to know if server is up
@@ -98,7 +98,7 @@ def sendData():
 
             headers = {'Content-type': 'application/json'}
 
-            r = requests.post('http://' + HOST_NAME + '/api/submit', data=json.dumps(to_post), headers=headers, verify=False)
+            r = requests.post('https://' + HOST_NAME + '/api/submit', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + '\n\nStatus: ' + str(r.status_code))
 
             if(r.status_code == 404):
@@ -135,7 +135,7 @@ def scanMode():
 
             headers = {'Content-type': 'application/json'}
 
-            r = requests.post('http://' + HOST_NAME + '/api/scan', data=json.dumps(to_post), headers=headers, verify=False)
+            r = requests.post('https://' + HOST_NAME + '/api/scan', data=json.dumps(to_post), headers=headers, verify=False)
             print('posted data to server: ' + str(json.dumps(to_post)) + '\n\nStatus: ' + str(r.status_code))
 
             if(r.status_code == 201):

@@ -46,7 +46,7 @@
 
     <script>
         (function updateScan() {
-            fetch('http://127.0.0.1:8000/components/scan')
+            fetch('{{route('components.scan')}}')
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {

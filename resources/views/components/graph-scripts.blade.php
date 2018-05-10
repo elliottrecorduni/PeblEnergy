@@ -7,7 +7,7 @@
 
         window['auto__'+category_name+'_time_frame'] = 'day';
 
-        fetch('http://127.0.0.1:8000/api/data/{{$type}}/' + category_name + '/day')
+        fetch('{{env('APP_URL')}}/api/data/{{$type}}/' + category_name + '/day')
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
@@ -25,7 +25,7 @@
 
         window['auto__'+category_name+'_time_frame'] = 'week';
 
-        fetch('http://127.0.0.1:8000/api/data/{{$type}}/' + category_name + '/week')
+        fetch('{{env('APP_URL')}}//api/data/{{$type}}/' + category_name + '/week')
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
@@ -44,7 +44,7 @@
 
         window['auto__'+category_name+'_time_frame'] = 'month';
 
-        fetch('http://127.0.0.1:8000/api/data/{{$type}}/' + category_name + '/month')
+        fetch('{{env('APP_URL')}}/api/data/{{$type}}/' + category_name + '/month')
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
@@ -67,7 +67,7 @@
 
         window['auto__'+category_name+'_time_frame'] = 'year';
 
-        fetch('http://127.0.0.1:8000/api/data/{{$type}}/' + category_name + '/year')
+        fetch('{{env('APP_URL')}}/api/data/{{$type}}/' + category_name + '/year')
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
