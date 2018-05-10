@@ -178,7 +178,7 @@
 
     <script>
         (function updateMonthlyBudget() {
-            fetch('http://127.0.0.1:8000/components/monthly-budget')
+            fetch('{{route('components.monthly-budget')}}')
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
@@ -190,7 +190,7 @@
         })();
 
         (function updateRealTimeUsage() {
-            fetch('http://127.0.0.1:8000/components/real-time-data-usage')
+            fetch('{{route('components.real-time-data-usage')}}')
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
@@ -202,7 +202,7 @@
         })();
 
         (function updateActiveDevices() {
-            fetch('http://127.0.0.1:8000/components/active-devices')
+            fetch('{{route('components.active-devices')}}')
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {

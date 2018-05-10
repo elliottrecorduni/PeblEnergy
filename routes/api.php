@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/scan', 'DeviceController@scan');
-Route::post('/submit', 'DeviceController@submit');
+Route::post('/scan', 'DeviceController@scan')->name('components.scan');
+Route::post('/submit', 'DeviceController@submit')->name('components.submit');;
 Route::post('/devices/pair', 'DeviceController@pair')->name('devices.pair');
 
 Route::get('/data/category/{category_name}/{time_frame}', 'DataController@category');
