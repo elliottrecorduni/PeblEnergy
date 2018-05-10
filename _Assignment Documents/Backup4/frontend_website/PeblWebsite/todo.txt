@@ -1,0 +1,9 @@
+WEBSITE TODO LIST
+
+REDESIGN HOME PAGE
+
+DEVICES PAGE
+- Fix vertical nav height
+
+MISC
+-didnt fix all links
