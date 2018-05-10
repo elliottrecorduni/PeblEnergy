@@ -105,6 +105,7 @@ class DeviceController extends Controller
         $device->mac_address = $request->mac_address;
         $device->api_token = $request->api_token;
 
+
         $device->save();
 
         return redirect()->route('devices.index');

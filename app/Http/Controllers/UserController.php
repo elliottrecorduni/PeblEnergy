@@ -93,13 +93,25 @@ class UserController extends Controller
 
         $user = User::find($id);
 
+        $emailExists = false;
+        if ($request->email != $user->email) {
+            if (!empty(User::where('email', '=', $request->email)->first())) {
+                $emailExists = true;
+            }
+        }
+
         $user->email = $request->email ?? $user->email;
         $user->name = $request->name ?? $user->name;
 //        $user->password = $request->password ?? $user->password;
 
         if((password_verify($request->currentpassword, $user->password))){
-            $user->save();
-            $request->session()->flash('alert-success', 'Profile updated successfully.');
+            if ($emailExists) {
+                $request->session()->flash('alert-danger', 'Email address already exists');
+                return redirect()->route('user.show', $user->id);
+            } else {
+                $user->save();
+                $request->session()->flash('alert-success', 'Profile updated successfully.');
+            }
             return redirect()->route('user.show', $user->id);
         } else {
             $request->session()->flash('alert-danger', 'Invalid password.');
