@@ -66,7 +66,7 @@
 
     (function update() {
 
-        fetch('http://127.0.0.1:8000/api/data/{{$type}}/{{$name}}/' + auto__{{$name}}_time_frame)
+        fetch('{{env('APP_URL')}}/api/data/{{$type}}/{{$name}}/' + auto__{{$name}}_time_frame)
             .then(function (data) {
                 return data.json();
             }).then(function (data) {
